@@ -17,5 +17,13 @@
         limit #{start},#{rows};
     </select>
 
+    <!-- 查看最新文章 -->
+    <select id="LatestArticles" resultType="Article">
+        select *
+        from article
+        order by ctime desc
+        limit 0,5;
+    </select>
+
 
 </mapper>

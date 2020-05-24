@@ -13,6 +13,13 @@ public class ArticleService {
 
     private ArticleDao articleDao;
 
+
+    //统计文章数量
+    public Integer articleCount() {
+        return articleDao.selectArticleCount();
+    }
+
+
     //查看文章
     public EasyUIResult checkArticle(Integer page, Integer rows) {
         //准备一个返回对象
@@ -28,6 +35,10 @@ public class ArticleService {
         return result;
     }
 
-
+    //查看最新文章
+    public List LatestArticles(){
+        List<Article> aList = articleDao.LatestArticles();
+        return aList;
+    }
 
 }

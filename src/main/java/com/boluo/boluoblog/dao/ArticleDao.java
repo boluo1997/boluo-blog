@@ -12,4 +12,8 @@ public interface ArticleDao {
 
     //分页查看文章
     List<Article> selectArticleByPage(@Param("start") Integer start,@Param("rows") Integer rows);
+
+    //查看最新文章
+    List<Article> LatestArticles();
+
 }
