@@ -18,9 +18,25 @@ public class Article {
 
     private String articleContent;      //文章文字内容
 
-    
+    //内容所属用户ID
 
+    private String articleType;         //内容类别
 
+    //内容状态
+
+    //标签列表
+
+    //分类列表
+
+    private Integer hits;               //点击次数
+
+    //内容所属评论数
+
+    //是否允许评论
+
+    //是否允许ping
+
+    //允许出现在聚合中
 
 
 }
