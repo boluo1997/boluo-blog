@@ -23,7 +23,7 @@ public class ArticleController {
 
 
     //查看文章
-    @RequestMapping("check")
+    @RequestMapping("checkArticles")
     public EasyUIResult checkArticle(Integer page,Integer rows){
         return articleService.checkArticle(page,rows);
     }
@@ -35,6 +35,8 @@ public class ArticleController {
         return articleService.LatestArticles();
     }
 
+
+    //查看文章分类数
 
 
 
