@@ -4,6 +4,7 @@ package com.boluo.boluoblog.service;
 import com.boluo.boluoblog.dao.ArticleDao;
 import com.boluo.boluoblog.domain.Article;
 import com.boluo.boluoblog.utils.EasyUIResult;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,8 +12,8 @@ import java.util.List;
 @Service
 public class ArticleService {
 
+    @Autowired
     private ArticleDao articleDao;
-
 
     //统计文章数量
     public Integer articleCount() {
@@ -41,4 +42,8 @@ public class ArticleService {
         return aList;
     }
 
+    // 查看单个文章
+    public String checkArticleInfo(Integer articleId) {
+        return articleDao.selectArticleInfo(articleId);
+    }
 }

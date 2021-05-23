@@ -17,6 +17,12 @@
         limit #{start},#{rows};
     </select>
 
+    <select id="selectArticleInfo" parameterType="Integer" resultType="java.lang.String">
+        select name
+        from article
+        where id = #{articleId};
+    </select>
+
     <!-- 查看最新文章 -->
     <select id="LatestArticles" resultType="Article">
         select *

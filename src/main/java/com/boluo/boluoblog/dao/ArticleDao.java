@@ -16,4 +16,6 @@ public interface ArticleDao {
     //查看最新文章
     List<Article> LatestArticles();
 
+    String selectArticleInfo(@Param("articleId") Integer articleId);
+
 }
