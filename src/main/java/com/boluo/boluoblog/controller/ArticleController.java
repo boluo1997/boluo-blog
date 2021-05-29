@@ -1,9 +1,9 @@
 package com.boluo.boluoblog.controller;
 
-
 import com.boluo.boluoblog.service.ArticleService;
 import com.boluo.boluoblog.utils.EasyUIResult;
 import com.boluo.boluoblog.utils.RedisUtils;
+import com.boluo.boluoblog.utils.SysResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,23 +34,33 @@ public class ArticleController {
     }
 
     //查看文章信息
+//    @RequestMapping("item/{articleId}")
+//    public String checkArticleInfo(@PathVariable Integer articleId){
+//
+//        boolean br = redisUtils.exists(articleId.toString());
+//        String str = "";
+//
+//        if(br){
+//            System.out.println("从缓存中获取数据...");
+//            Object object = redisUtils.get(articleId.toString());
+//            str = object.toString();
+//        }else {
+//            System.out.println("从数据库中获取数据...");
+//            str = articleService.checkArticleInfo(articleId);
+//            redisUtils.set(articleId.toString(), str);
+//        }
+//
+//        return str;
+//    }
+
+    //查看文章信息
     @RequestMapping("item/{articleId}")
-    public String checkArticleInfo(@PathVariable Integer articleId){
+    public SysResult checkArticleInfo(@PathVariable Integer articleId){
+        SysResult result = new SysResult();
+        result.setStatus(200);
+        result.setMsg("OK");
 
-        boolean br = redisUtils.exists(articleId.toString());
-        String str = "";
-
-        if(br){
-            System.out.println("从缓存中获取数据...");
-            Object object = redisUtils.get(articleId.toString());
-            str = object.toString();
-        }else {
-            System.out.println("从数据库中获取数据...");
-            str = articleService.checkArticleInfo(articleId);
-            redisUtils.set(articleId.toString(), str);
-        }
-
-        return str;
+        return result;
     }
 
     //查看最新文章
