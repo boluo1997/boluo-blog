@@ -1,4 +1,4 @@
-package com.boluo.boluoblog.utils;
+package com.boluo.blog.utils;
 
 public class SysResult {
 

@@ -1,7 +1,7 @@
-package com.boluo.boluoblog.service;
+package com.boluo.blog.service;
 
-import com.boluo.boluoblog.utils.PicUploadResult;
-import com.boluo.boluoblog.utils.UploadUtil;
+import com.boluo.blog.utils.PicUploadResult;
+import com.boluo.blog.utils.UploadUtil;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 

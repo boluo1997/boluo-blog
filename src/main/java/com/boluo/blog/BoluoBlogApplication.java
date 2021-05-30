@@ -1,4 +1,4 @@
-package com.boluo.boluoblog;
+package com.boluo.blog;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;

@@ -1,4 +1,4 @@
-package com.boluo.boluoblog.utils;
+package com.boluo.blog.utils;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;

@@ -1,8 +1,8 @@
-package com.boluo.boluoblog.controller;
+package com.boluo.blog.controller;
 
-import com.boluo.boluoblog.domain.Article;
-import com.boluo.boluoblog.service.AdminService;
-import com.boluo.boluoblog.utils.SysResult;
+import com.boluo.blog.domain.Article;
+import com.boluo.blog.service.AdminService;
+import com.boluo.blog.utils.SysResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 

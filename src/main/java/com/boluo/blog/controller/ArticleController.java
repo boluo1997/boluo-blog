@@ -1,9 +1,9 @@
-package com.boluo.boluoblog.controller;
+package com.boluo.blog.controller;
 
-import com.boluo.boluoblog.service.ArticleService;
-import com.boluo.boluoblog.utils.EasyUIResult;
-import com.boluo.boluoblog.utils.RedisUtils;
-import com.boluo.boluoblog.utils.SysResult;
+import com.boluo.blog.service.ArticleService;
+import com.boluo.blog.utils.EasyUIResult;
+import com.boluo.blog.utils.RedisUtils;
+import com.boluo.blog.utils.SysResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;

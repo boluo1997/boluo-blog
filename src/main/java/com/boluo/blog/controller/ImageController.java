@@ -1,7 +1,7 @@
-package com.boluo.boluoblog.controller;
+package com.boluo.blog.controller;
 
-import com.boluo.boluoblog.service.ImageService;
-import com.boluo.boluoblog.utils.PicUploadResult;
+import com.boluo.blog.service.ImageService;
+import com.boluo.blog.utils.PicUploadResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

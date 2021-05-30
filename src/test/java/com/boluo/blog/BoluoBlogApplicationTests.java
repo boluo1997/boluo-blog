@@ -1,7 +1,6 @@
-package com.boluo.boluoblog;
+package com.boluo.blog;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.Date;
 

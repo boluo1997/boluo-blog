@@ -1,6 +1,6 @@
-package com.boluo.boluoblog.dao;
+package com.boluo.blog.dao;
 
-import com.boluo.boluoblog.domain.Article;
+import com.boluo.blog.domain.Article;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

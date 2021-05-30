@@ -1,7 +1,7 @@
-package com.boluo.boluoblog.service;
+package com.boluo.blog.service;
 
-import com.boluo.boluoblog.dao.AdminDao;
-import com.boluo.boluoblog.domain.Article;
+import com.boluo.blog.dao.AdminDao;
+import com.boluo.blog.domain.Article;
 import org.springframework.stereotype.Service;
 
 @Service

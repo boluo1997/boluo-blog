@@ -1,4 +1,4 @@
-package com.boluo.boluoblog.domain;
+package com.boluo.blog.domain;
 
 import java.util.Date;
 

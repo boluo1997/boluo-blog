@@ -1,9 +1,9 @@
-package com.boluo.boluoblog.service;
+package com.boluo.blog.service;
 
 
-import com.boluo.boluoblog.dao.ArticleDao;
-import com.boluo.boluoblog.domain.Article;
-import com.boluo.boluoblog.utils.EasyUIResult;
+import com.boluo.blog.dao.ArticleDao;
+import com.boluo.blog.domain.Article;
+import com.boluo.blog.utils.EasyUIResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

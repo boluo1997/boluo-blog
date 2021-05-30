@@ -1,4 +1,4 @@
-package com.boluo.boluoblog.utils;
+package com.boluo.blog.utils;
 
 import java.util.List;
 import com.fasterxml.jackson.databind.JsonNode;
