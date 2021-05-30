@@ -1,4 +1,4 @@
-package com.boluo.blog.common;
+package com.boluo.blog.request;
 
 import java.io.Serializable;
 

@@ -1,6 +1,8 @@
-package com.boluo.blog.common;
+package com.boluo.blog.response;
 
 // import io.swagger.annotations.ApiModel;
+
+import com.boluo.blog.request.PageHelper;
 
 import java.util.ArrayList;
 import java.util.List;

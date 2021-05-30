@@ -1,6 +1,8 @@
-package com.boluo.blog.common;
+package com.boluo.blog.request;
 
 // import io.swagger.annotations.ApiModelProperty;
+
+import com.boluo.blog.request.BaseRequest;
 
 public class BasePageRequest extends BaseRequest {
     private static final long serialVersionUID = 3568883075444378337L;
