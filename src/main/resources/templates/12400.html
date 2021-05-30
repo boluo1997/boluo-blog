@@ -1,0 +1,490 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>pygame常用函数 | 丁生的个人博客</title><meta name="description" content="开始你的第一个 python 小游戏——pygame快速上手"><meta name="keywords" content="python,pygame"><meta name="author" content="丁生"><meta name="copyright" content="丁生"><meta name="format-detection" content="telephone=no"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="https://hm.baidu.com"><link rel="preconnect" href="http://ta.qq.com"><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="crossorigin"><link rel="preconnect" href="//busuanzi.ibruce.info"><meta name="baidu-site-verification" content="wIDbD23BFA"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="pygame常用函数"><meta name="twitter:description" content="开始你的第一个 python 小游戏——pygame快速上手"><meta name="twitter:image" content="static/image/mtUT9iSPeX8YJav.jpg"><meta property="og:type" content="article"><meta property="og:title" content="pygame常用函数"><meta property="og:url" content="http://fabian4.gitee.io/12400.html"><meta property="og:site_name" content="丁生的个人博客"><meta property="og:description" content="开始你的第一个 python 小游戏——pygame快速上手"><meta property="og:image" content="static/image/mtUT9iSPeX8YJav.jpg"><script src="static/js/js.cookie.min.js"></script><script>var autoChangeMode = 'false'
+var t = Cookies.get("theme")
+if (autoChangeMode == '1'){
+  var isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+  var isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
+  var isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined){
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport){
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour < 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+  }
+  } else if (t == 'light') activateLightMode()
+  else activateDarkMode()
+
+} else if (autoChangeMode == '2'){
+  now = new Date();
+  hour = now.getHours();
+  isNight = hour < 6 || hour >= 18
+  if(t === undefined) isNight? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode() 
+} else {
+  if ( t == 'dark' ) activateDarkMode()
+  else if ( t == 'light') activateLightMode()
+}
+
+function activateDarkMode(){
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+    document.querySelector('meta[name="theme-color"]').setAttribute('content','#000')
+  }
+}
+function activateLightMode(){
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+  document.querySelector('meta[name="theme-color"]').setAttribute('content','#fff')
+  }
+}</script><link rel="stylesheet" href="static/css/index.css"><link rel="stylesheet" href="static/css/font-awesome.min.css"><link rel="stylesheet" href="static/css/jquery.fancybox.min.css"><link rel="stylesheet" href="static/css/snackbar.min.css"><link rel="canonical" href=""><link rel="prev" title="超级玛丽的 python 实现" href="2041.html"><link rel="next" title="pygame快速上手" href="12739.html"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?21649d9cdb2cd4f62daa5d692e743c0a";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script src="static/js/stats-66550846.js" charset="UTF-8"></script><link rel="stylesheet" href="static/css/css-TitilliumWeb.css"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"cookieDomain":"http://fabian4.gitee.io/","msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: {"bookmark":{"message_prev":"按","message_next":"键将本页加入书签"},"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#2d3035","position":"bottom-left"},
+  baiduPush: true,
+  highlightCopy: true,
+  highlightLang: true,
+  highlightShrink: 'false',
+  isFontAwesomeV5: false,
+  isPhotoFigcaption: false
+  
+}</script><script>var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isSidebar: true  
+  }</script><noscript><style>
+#page-header {
+  opacity: 1
+}
+.justified-gallery img{
+  opacity: 1
+}
+</style></noscript><meta name="generator" content="Hexo 4.2.0"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="static/picture/ZWnOQA3kUGKXSjJ.jpg" onerror="onerror=null;src='https://i.loli.net/2020/04/24/LOgyfbeXRjSCGP3.gif'" alt="avatar"></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="index1.html"><div class="headline">文章</div><div class="length_num">15</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="index2.html"><div class="headline">标签</div><div class="length_num">8</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="index3.html"><div class="headline">分类</div><div class="length_num">6</div></a></div></div></div><hr><div class="menus_items"><div class="menus_item"><a class="site-page" href="index.html"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="index1.html"><i class="fa-fw fa fa-archive"></i><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="index2.html"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="index3.html"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div></div></div></div><i class="fa fa-arrow-right on" id="toggle-sidebar" aria-hidden="true">     </i><div id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#pygame-会用这些函数就够了"><span class="toc-number">1.</span> <span class="toc-text">pygame 会用这些函数就够了</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-pygame-sprite"><span class="toc-number">1.1.</span> <span class="toc-text">1. pygame.sprite</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-pygame-event"><span class="toc-number">1.2.</span> <span class="toc-text">2. pygame.event </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-pygame-key"><span class="toc-number">1.3.</span> <span class="toc-text">3. pygame.key</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-pygame"><span class="toc-number">1.4.</span> <span class="toc-text">4. pygame </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-pygame-time"><span class="toc-number">1.5.</span> <span class="toc-text">5. pygame.time</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-pygame-display"><span class="toc-number">1.6.</span> <span class="toc-text">6. pygame.display</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-pygame-Rect"><span class="toc-number">1.7.</span> <span class="toc-text">7. pygame.Rect</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-pygame-Color"><span class="toc-number">1.8.</span> <span class="toc-text">8. pygame.Color</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-pygame-image"><span class="toc-number">1.9.</span> <span class="toc-text">9. pygame.image</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-pygame-Surface"><span class="toc-number">1.10.</span> <span class="toc-text">10. pygame.Surface</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-pygame-mixer"><span class="toc-number">1.11.</span> <span class="toc-text">11. pygame.mixer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-pygame-draw"><span class="toc-number">1.12.</span> <span class="toc-text">12. pygame.draw </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-pygame-font"><span class="toc-number">1.13.</span> <span class="toc-text">13. pygame.font</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14-pygame-mixer-music"><span class="toc-number">1.14.</span> <span class="toc-text">14. pygame.mixer.music</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#15-pygame-mouse"><span class="toc-number">1.15.</span> <span class="toc-text">15. pygame.mouse</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#16-pygame-BufferProxy"><span class="toc-number">1.16.</span> <span class="toc-text">16. pygame.BufferProxy</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#17-pygame-cdrom"><span class="toc-number">1.17.</span> <span class="toc-text">17. pygame.cdrom </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#18-pygame-PixelArray"><span class="toc-number">1.18.</span> <span class="toc-text">18.  pygame.PixelArray</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#19-pygame-cursors"><span class="toc-number">1.19.</span> <span class="toc-text">19. pygame.cursors</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#20-pygame-scrap"><span class="toc-number">1.20.</span> <span class="toc-text">20. pygame.scrap </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#21-pygame-sndarray"><span class="toc-number">1.21.</span> <span class="toc-text">21. pygame.sndarray</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#22-pygame-transform"><span class="toc-number">1.22.</span> <span class="toc-text">22. pygame.transform</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#23-pygame-tests"><span class="toc-number">1.23.</span> <span class="toc-text">23. pygame.tests </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#24-pygame-freetype"><span class="toc-number">1.24.</span> <span class="toc-text">24.  pygame.freetype</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#25-pygame-joystick"><span class="toc-number">1.25.</span> <span class="toc-text">25. pygame.joystick</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#26-pygame-locals"><span class="toc-number">1.26.</span> <span class="toc-text">26. pygame.locals </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#27-pygame-surfarray"><span class="toc-number">1.27.</span> <span class="toc-text">27. pygame.surfarray </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#28-pygame-Overlay"><span class="toc-number">1.28.</span> <span class="toc-text">28. pygame.Overlay </span></a></li></ol></li></ol></div></div></div><div id="body-wrap"><div id="web_bg" data-type="photo"></div><div class="post-bg" id="nav" style="background-image: url(static/image/mtUT9iSPeX8YJav.jpg)"><div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="index.html">丁生的个人博客</a></span><span class="pull_right menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="index.html"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="index1.html"><i class="fa-fw fa fa-archive"></i><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="index2.html"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="index3.html"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div></div><span class="toggle-menu close"><a class="site-page"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a></span></span></div><div id="post-info"><div id="post-title"><div class="posttitle">pygame常用函数</div></div><div id="post-meta"><div class="meta-firstline"><time class="post-meta__date" title="发表于 2020-04-28 00:00:00"><i class="fa fa-calendar" aria-hidden="true"></i> 发表于 2020-04-28</time><span class="post-meta__categories"><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="index4.html">python</a></span></div><div class="meta-secondline"> <span class="post-meta-wordcount"><i class="post-meta__icon fa fa-file-word-o" aria-hidden="true"></i><span>字数总计:</span><span class="word-count">3.1k</span><span class="post-meta__separator">|</span><i class="post-meta__icon fa fa-clock-o" aria-hidden="true"></i><span>阅读时长: 11 分钟</span></span></div><div class="meta-thirdline"><span class="post-meta-pv-cv"><span class="post-meta__separator">|</span><i class="fa fa-eye post-meta__icon" aria-hidden="true"> </i><span>阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-commentcount"><span class="post-meta__separator">|</span><i class="post-meta__icon fa fa-comment-o" aria-hidden="true"></i><span>评论数:</span><a href="#post-comment" itemprop="discussionUrl"><span class="valine-comment-count comment-count" data-xid="/12400.html" itemprop="commentCount"></span></a></span></div></div></div></div><main class="layout_post" id="content-inner"><article id="post"><div id="article-container"><h1 id="pygame-会用这些函数就够了"><a href="#pygame-会用这些函数就够了" class="headerlink" title="pygame 会用这些函数就够了"></a>pygame 会用这些函数就够了</h1><p>借鉴了pygame的官方文档和一些中译版，对于我们实际写代码时较常用的一些函数和方法进行了整理</p>
+<p>前15个可以说是较为常用的函数，后面的由于不太常用就有所省略。</p>
+<p>本文档只是作为参考，具体使用还请参照<a href="javascript:;" target="_blank" rel="noopener">官方文档</a>。如果整理的哪里有问题还希望大家指正。</p>
+<ol>
+<li><a href="#1">pygame.sprite：基本游戏对象</a></li>
+<li><a href="#2">pygame,event：处理事件</a></li>
+<li><a href="#3">pygame.key：键盘按键</a></li>
+<li><a href="#4">pygame：顶层模块</a></li>
+<li><a href="#5">pygame.time：时间模块</a></li>
+<li><a href="#6">pygame.diaplay：控制窗口显示</a></li>
+<li><a href="#7">pygame.Rect：图像矩形模块</a></li>
+<li><a href="#8">pygame.Color：颜色模块</a></li>
+<li><a href="#9">pygame.image：图片模块</a></li>
+<li><a href="#10">pygame.Surface：表示图像</a></li>
+<li><a href="#11">pygame.mixer：声音模块</a></li>
+<li><a href="#12">pygame.draw：绘制图像</a></li>
+<li><a href="#13">pygame.font：字体模块</a></li>
+<li><a href="#14">pygame.mixer.music：音乐模块</a></li>
+<li><a href="#15">pygame.mouse：鼠标移动</a></li>
+<li><a href="#16">pygame.BufferProxy：缓冲对象</a></li>
+<li><a href="#17">pygame.cdrom：音频光盘</a></li>
+<li><a href="#18">pygame.PixelArray：像素数组</a></li>
+<li><a href="#19">pygame.cursor：鼠标光标</a></li>
+<li><a href="#20">pygame.scrap：剪切板</a></li>
+<li><a href="#21">pygame.andarray：音频采样</a></li>
+<li><a href="#22">pygame.transform：改变形态</a></li>
+<li><a href="#23">pygame.tests：测试模块</a></li>
+<li><a href="#24">pygame.freetype：计算机字体</a></li>
+<li><a href="#25">pygame.joystick：外接设备</a></li>
+<li><a href="#26">pygame.locals：常量定义</a></li>
+<li><a href="#27">pygame.surfarray：访问像素</a></li>
+<li><a href="#28">pygame.Overlay：图像叠加</a></li>
+</ol>
+<h2 id="1-pygame-sprite"><a href="#1-pygame-sprite" class="headerlink" title="1. pygame.sprite"></a><div id='1'>1. pygame.sprite</div></h2><p>该类是pygame中处理基本游戏对象类的模块</p>
+<ul>
+<li><code>pygame.sprite.Sprite</code>：可见游戏对象的简单基类<ul>
+<li><code>pygame.sprite.Sprite.update</code>：更新状态</li>
+<li><code>pygame.sprite.Sprite.add</code>：加到组中</li>
+<li><code>pygame.sprite.Sprite.remove</code>：从组中删除</li>
+<li><code>pygame.sprite.Sprite.kill</code>：从所有组中删除</li>
+<li><code>pygame.sprite.Sprite.groups</code>：包含此Sprite的组列表</li>
+</ul>
+</li>
+<li><code>pygame.sprite.DirtySprite</code>：具有更多属性和功能的Sprite的子类</li>
+<li><code>pygame.sprite.Group</code>：保存和管理多个Sprite对象的容器类<ul>
+<li><code>pygame.sprite.Group.copy</code>：复制组</li>
+<li><code>pygame.sprite.Group.add</code>：添加到该组</li>
+<li><code>pygame.sprite.Group.remove</code>：从组中删除</li>
+<li><code>pygame.sprite.Group.has</code>：检测是否包含</li>
+<li><code>pygame.sprite.Group.update</code>：更新状态</li>
+<li><code>pygame.sprite.Group.draw</code>：绘制图像</li>
+<li><code>pygame.sprite.Group.empty</code>：删除所有</li>
+</ul>
+</li>
+<li><code>pygame.sprite.collide_rect</code>：使用rects检测两个sprite之间的碰撞</li>
+<li><code>pygame.sprite.collode_rect_ratio</code>：使用按比例缩放的rects检测碰撞</li>
+<li><code>pygame.sprite.collide_circle</code>：使用圆来检测碰撞</li>
+<li><code>pygame.sprite.collide_circle_ratio</code>：使用按比例缩放的圆检测</li>
+<li><code>pygame.sprite.collide_mask</code>：使用蒙版检测碰撞</li>
+</ul>
+<h2 id="2-pygame-event"><a href="#2-pygame-event" class="headerlink" title="2. pygame.event "></a><div id='2'>2. pygame.event </div></h2><p>该类是pygame中处理事件与事件队列的模块</p>
+<ul>
+<li><code>pygame.event.pump</code>：让其内部自动处理事件</li>
+<li><code>pygame.event.get</code>：从队列中获取事件</li>
+<li><code>pygame.event.poll</code>：从队列中获取一个事件</li>
+<li><code>pygame.event.wait</code>：等待并从队列中获取一个事件</li>
+<li><code>pygame.event.peek</code>：检测某个类型事件是否在队列中</li>
+<li><code>pygame.event.clear</code>：从队列中删除所有事件</li>
+<li><code>pygame.event.set_allowed</code>：控制哪些事件禁止进入队列</li>
+<li><code>pygame.event.set_blocked</code>：控制哪些事件允许进入队列</li>
+<li><code>pygame.event.post</code>：放置一个新事件进入队列</li>
+<li><code>pygame.event.Event</code>：创建一个新的事件对象</li>
+<li>事件种类：<ul>
+<li>QUIT：退出</li>
+<li>KEYDOWN：按下按键</li>
+<li>KEYUP：松开按键</li>
+<li>MOUSEMOTION：鼠标移动</li>
+<li>其他游戏杆、游戏手柄、追踪球事件</li>
+<li>支持自定义事件</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-pygame-key"><a href="#3-pygame-key" class="headerlink" title="3. pygame.key"></a><div id='3'>3. pygame.key</div></h2><p>该类是pygame处理与键盘有关的模块</p>
+<ul>
+<li><code>pygame.key.get_focused</code>：窗口获得键盘输入焦点返回True</li>
+<li><code>pygame.key.get_pressed</code>：获取键盘所有按键的状态</li>
+<li>key属性：pygame预定义的键盘上的键位</li>
+<li>mod属性：pygame预定义的组合键</li>
+</ul>
+<h2 id="4-pygame"><a href="#4-pygame" class="headerlink" title="4. pygame "></a><div id='4'>4. pygame </div></h2><p>该类为最顶层的模块</p>
+<ul>
+<li><code>pygame.init</code>：初始化导入所有pygame模块</li>
+<li><code>pygame.quit</code>：卸载所有导入的模块</li>
+</ul>
+<h2 id="5-pygame-time"><a href="#5-pygame-time" class="headerlink" title="5. pygame.time"></a><div id='5'>5. pygame.time</div></h2><p>该类是pygame中用于时间管理模块</p>
+<ul>
+<li><code>pygame.time.get_ticks</code>：以毫秒为单位获取时间</li>
+<li><code>pygame.time.wait</code>：暂停程序一段时间</li>
+<li><code>pygame.time.delay</code>：暂停程序一段时间</li>
+<li><code>pygame.time.Colck</code>：创建一个对象来帮助或更新时间<ul>
+<li><code>pygame.time.Clock.tick</code>：更新clock对象</li>
+</ul>
+</li>
+</ul>
+<h2 id="6-pygame-display"><a href="#6-pygame-display" class="headerlink" title="6. pygame.display"></a><div id='6'>6. pygame.display</div></h2><p>该类是pygame中用于控制窗口和屏幕显示的模块</p>
+<ul>
+<li><code>pygame.display.init</code>：初始化模块</li>
+<li><code>pygame.display.quit</code>：取消初始化</li>
+<li><code>pygame.display.get_init</code>：判断是否初始化成功</li>
+<li><code>pygame.display.set_mode</code>：初始化一个准备显示的窗口或者屏幕<ul>
+<li><code>pygame.display.set_mode(resolution=(0,0), flags=0, depth=0)</code><ul>
+<li>resolution：传入屏幕的长宽，若为 0 则默认当前屏幕分辨率</li>
+<li>flags：控制显示类型 可以多种类型用管道符 ‘ | ’ 组合<ul>
+<li>pygame.FULLSCREEN 创建一个全屏显示</li>
+<li>pygame.DOUBLEBUF  双缓冲模式</li>
+<li>pygame.HWSURFACE 硬件加速，仅在FULLSCREEN下可以使用</li>
+<li>pygame.RESIZABLE 创建一个可调整尺寸的窗口</li>
+<li>pygame.NOFRAME 创建一个没有边框和控制按钮的窗口</li>
+</ul>
+</li>
+<li>depth：深度参数，一般不传值</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>pygame.display.get_surface</code>：获取当前显示的 Surface 对象</li>
+<li><code>pygame.display.flip</code>：将<strong>完整</strong>待显示的 Surface 对象更新到屏幕上</li>
+<li><code>pygame.display.update</code>：更新<strong>部分</strong>软件界面显示</li>
+<li><code>pygame.display.iconify</code>：最小化显示 Surface 对象</li>
+<li><code>pygame.display.toggle_fullscreen</code>：切换全屏显示和窗口显示</li>
+<li><code>pygame.display.set_icon</code>：更改显示窗口的系统头像</li>
+<li><code>pygame.display.set_caption</code>：设置当前窗口标题</li>
+<li><code>pygame.display.get_caption</code>：获取当前窗口标题</li>
+</ul>
+<h2 id="7-pygame-Rect"><a href="#7-pygame-Rect" class="headerlink" title="7. pygame.Rect"></a><div id='7'>7. pygame.Rect</div></h2><p>该类是pygame中直接操作对象外界矩形的模块</p>
+<ul>
+<li><code>pygame.Rect</code>：创建矩形对象<ul>
+<li><code>pygame.Rect(left, top, width, height)</code>：根据左上角坐标和长宽创建矩形</li>
+<li><code>pygame.Rect((left, top), (width, height))</code>：根据左上角坐标和长宽创建矩形</li>
+<li>该对象具有用来移动和对齐的参数<ul>
+<li>x, y</li>
+<li>top, left, bottom, right</li>
+<li>topleft, bottomleft, topright, bottomright</li>
+<li>midtop, midleft, midbottom, midright</li>
+<li>center, centerx, centery</li>
+<li>size, width, height</li>
+<li>w,h</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>pygame.Rect.copy</code>：复制矩形</li>
+<li><code>pygame.Rect.move</code>：移动矩形<ul>
+<li><code>pygame.Rect.move(x, y)</code>：传入偏移量</li>
+</ul>
+</li>
+<li><code>pygame.Rect.contains</code>：测试一个矩形是否在另一个矩形内部，传入矩形对象</li>
+<li><code>pygame.Rect.collidepoint</code>：测试一个点是否在矩形内</li>
+<li><code>pygame.Rect.colliderect</code>：测试两个矩形是否重叠</li>
+</ul>
+<h2 id="8-pygame-Color"><a href="#8-pygame-Color" class="headerlink" title="8. pygame.Color"></a><div id='8'>8. pygame.Color</div></h2><p>该类是pygame中用于描述颜色的模块</p>
+<ul>
+<li><code>pygame.Color</code>：返回一个颜色<ul>
+<li>Color(name)：传入名称</li>
+<li>Color(r, g, b, a)：传入rgba参数</li>
+<li>Color(rgbvalue)：传入rgb参数</li>
+</ul>
+</li>
+<li><code>pygame.Color.r</code>：获取或设置其红色值</li>
+<li><code>pygame.Color.g</code>：获取或设置其绿色值</li>
+<li><code>pygame.Color.b</code>：获取或设置其蓝色值</li>
+<li><code>pygame.Color.a</code>：获取或设置其alpha通道值</li>
+<li><code>pygame.Color.cmy</code>：获取或设置其 cmy (青、洋红和黄) 值</li>
+<li><code>pygame.Color.normalize</code>：返回标准化 RGBA 值</li>
+</ul>
+<h2 id="9-pygame-image"><a href="#9-pygame-image" class="headerlink" title="9. pygame.image"></a><div id='9'>9. pygame.image</div></h2><p>该类是pygame中处理图像传输的模块</p>
+<ul>
+<li><code>pygame.image.load</code>：从文件中加载新图像<ul>
+<li>传入文件路径和名称</li>
+<li>支持 JPG、PNG、GIF、BMP、PCX、TGA、TIF、LBM、PBM、XPM格式</li>
+</ul>
+</li>
+<li><code>pygame.image.save</code>：将图像保存到本地<ul>
+<li>传入 Surface 对象和路径</li>
+<li>支持BMP、TGA、PNG、JPEG格式</li>
+</ul>
+</li>
+</ul>
+<h2 id="10-pygame-Surface"><a href="#10-pygame-Surface" class="headerlink" title="10. pygame.Surface"></a><div id='10'>10. pygame.Surface</div></h2><p>该类是pygame中用于表示图像的模块</p>
+<ul>
+<li><code>pygame.Surface</code>：创建对象<ul>
+<li><code>pygame.Surface((width, height), flags=0, depth=0, masks=None)</code></li>
+<li><code>pygame.Surface((width, height), flags=0, Surface)</code></li>
+</ul>
+</li>
+<li><code>pygame.Surface.blit</code>：将一个图像绘制到另一个上方</li>
+<li><code>pygame.Surface.convert</code>：修改像素格式</li>
+<li><code>pygame.Surface.copy</code>：拷贝对象</li>
+<li><code>pygame.Surface.fill</code>：使用纯色填充对象</li>
+<li><code>pygame.Surface.scroll</code>：移动对象</li>
+</ul>
+<h2 id="11-pygame-mixer"><a href="#11-pygame-mixer" class="headerlink" title="11. pygame.mixer"></a><div id='11'>11. pygame.mixer</div></h2><p>该类是pygame中用来加载和播放声音的模块，默认有8个声道</p>
+<ul>
+<li><code>pygame.mixer.init</code>：初始化模块</li>
+<li><code>pygame.mixer.stop</code>：停止播放所有声道</li>
+<li><code>pygame.mixer.pause</code>：暂停播放所有声道</li>
+<li><code>pygame.mixer.unpause</code>：恢复暂停播放所有声道</li>
+<li><code>pygame.mixer.fadeout</code>：停止前淡出所有声音<ul>
+<li>传入时间参数，设置淡出时间</li>
+</ul>
+</li>
+</ul>
+<h2 id="12-pygame-draw"><a href="#12-pygame-draw" class="headerlink" title="12. pygame.draw "></a><div id='12'>12. pygame.draw </div></h2><p>该类是pygame中用于绘制图形的模块</p>
+<ul>
+<li><code>pygame.draw.rect</code>：绘制矩形<ul>
+<li><code>pygame.draw.rect(Surface, color, Rect, width=0)</code><ul>
+<li>Surface：绘制在 Surface 对象上</li>
+<li>color：传入 RGB 三元组或 RGBA 四元组</li>
+<li>width：指定边框宽度，0 表示填充该矩形</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>pygame.draw.polygon</code>：绘制多边形<ul>
+<li><code>pygame.draw.polygon(Surface, color, pointlist, width=0)</code><ul>
+<li>pointlist：指定多边形的各个顶点</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>pygame.draw.circle</code>：绘制圆形<ul>
+<li><code>pygame.draw.circle(Surface, color, pos, radius, width=0)</code><ul>
+<li>pos：圆心位置</li>
+<li>radius：半径</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>pygame.draw.ellipse</code>：绘制椭圆<ul>
+<li><code>pygame.draw.ellipse(Surface, color, Rect, width=0)</code><ul>
+<li>Rect：椭圆外切矩形</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>pygame.draw.arc</code>：绘制弧线<ul>
+<li><code>pygame.draw.arc(Surface, color, Rect, start_angle, stop_angle, width=1)</code><ul>
+<li>Rect：弧线所在椭圆外切矩形</li>
+<li>angle：弧线开始和结束位置</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>pygame.draw.line</code>：绘制线段<ul>
+<li><code>pygame.draw.line(Surface, color, start_pos, end_pos, width=1)</code></li>
+</ul>
+</li>
+<li><code>pygame.draw.lines</code>：绘制多条线段<ul>
+<li><code>pygame.draw.lines(Surface, color, closed, pointlist, width=1)</code><ul>
+<li>pointlist：一系列点</li>
+<li>closed：若为 True 则绘制首尾相连</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="13-pygame-font"><a href="#13-pygame-font" class="headerlink" title="13. pygame.font"></a><div id='13'>13. pygame.font</div></h2><p>该类是pygame中加载和表示字体的模块</p>
+<ul>
+<li><code>pygame.font.init</code>：初始化</li>
+<li><code>pygame.font.quit</code>：退出</li>
+<li><code>pygame.font.get_init</code>：判断是否初始化</li>
+<li><code>pygame.font.get_font</code>：获取所有可使用的字体</li>
+<li><code>pygame.font.match_font</code>：在系统中搜索字体</li>
+<li><code>pygame.font.SysFont</code>：从系统字体库冲创建一个对象</li>
+<li><code>pygame.font.Font</code>：从字体文件中创建一个对象<ul>
+<li><code>pygame.font.Font.render</code>：在新的 Surface 对象上绘制文本</li>
+<li><code>pygame.font.Font.size</code>：确定字体大小</li>
+<li><code>pygame.font.Font.set_underline</code>：是否加下划线</li>
+<li><code>pygame.font.Font.set_bold</code>：是否加粗</li>
+<li><code>pygame.font.Font.set_italic</code>：是否设置为斜体</li>
+</ul>
+</li>
+</ul>
+<h2 id="14-pygame-mixer-music"><a href="#14-pygame-mixer-music" class="headerlink" title="14. pygame.mixer.music"></a><div id='14'>14. pygame.mixer.music</div></h2><p>该类是pygame中控制音乐播放的模块，对于MP3格式的支持受限，建议OGG格式</p>
+<ul>
+<li><code>pygame.mixer.music.load</code>：载入一个音乐文件</li>
+<li><code>pygame.mixer.music.play</code>：开始播放<ul>
+<li><code>pygame.mixer.music.play(loops=0, start=0.0)</code><ul>
+<li>loops：控制<strong>再</strong>循环几次，若为3则一共播放4次</li>
+<li>start：控制从哪里开始播放，单位为秒</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>pygame.mixer.music.rewind</code>：重新开始播放</li>
+<li><code>pygame.mixer.music.stop</code>：结束播放</li>
+<li><code>pygame.mixer.music.pause</code>：暂停播放</li>
+<li><code>pygame.mixer.music.unpause</code>：继续播放</li>
+<li><code>pygame.mixer.music.set_voiume</code>：设置音量</li>
+<li><code>pygame.mixer.music.get_volume</code>：获取音量</li>
+<li><code>pygame.mixer.music.set_pos</code>：设置播放位置<ul>
+<li>传入一个浮点数，控制从什么时候开始播放</li>
+</ul>
+</li>
+<li><code>pygame.mixer.music.queue</code>：将一个应用文件放入队列，排在当前播放的音乐之后</li>
+<li><code>pygame.mixer.music.set_endevent</code>：设置播放结束事件</li>
+<li><code>pygame.mixer.music.get_endevent</code>：获取播放结束事件</li>
+</ul>
+<h2 id="15-pygame-mouse"><a href="#15-pygame-mouse" class="headerlink" title="15. pygame.mouse"></a><div id='15'>15. pygame.mouse</div></h2><p>该类是pygame中与鼠标操作相关的模块</p>
+<ul>
+<li><code>pygame.mouse.get_pressed</code>：判断鼠标按键是否被按下</li>
+<li><code>pygame.mouse.get_pos</code>：获取鼠标光标位置</li>
+<li><code>pygame.mouse.set_pos</code>：设置鼠标光标位置</li>
+<li><code>pygame.mouse.set_visible</code>：设置鼠标光标是否隐藏</li>
+<li><code>pygame.mouse.set_cuisor</code>：设置鼠标光标在程序内的显示图像</li>
+<li><code>pygame.mouse.get_cursor</code>：获取鼠标光标在程序内的显示图像</li>
+</ul>
+<h2 id="16-pygame-BufferProxy"><a href="#16-pygame-BufferProxy" class="headerlink" title="16. pygame.BufferProxy"></a><div id='16'>16. pygame.BufferProxy</div></h2><p>该类是 <code>Surface</code>对象通过数组协议导出的一个<strong>缓冲对象</strong></p>
+<ul>
+<li><code>pygame.BufferProxy.parent</code>：返回该 BufferProxy 的 Surface 对象， 或者调用 BufferProxy 的对象</li>
+<li><code>pygame.BufferProxy.length</code>：返回缓冲区的长度，单位是字节。类似于len字段</li>
+<li><code>pygame.BufferProxy.length</code>：将缓冲区的数据拷贝并返回，为<strong>str</strong>或<strong>bytes</strong>对象</li>
+<li><code>pygame.BufferProxy.write</code>：将字节写入缓冲区</li>
+</ul>
+<h2 id="17-pygame-cdrom"><a href="#17-pygame-cdrom" class="headerlink" title="17. pygame.cdrom "></a><div id='17'>17. pygame.cdrom </div></h2><p>该类是pygame中使用音频cdrom的模块， cdrom 即 Compact Disc Read-only Memory 只读光盘</p>
+<ul>
+<li><code>pygame.cdrom.init</code>：初始化模块</li>
+<li><code>pygame.cdrom.quit</code>：退出模块</li>
+<li><code>pygame.cdrom.get_init</code>：判断是否初始化成功，成功返回 <strong>true</strong></li>
+<li><code>pygame.cdrom.get_count</code>：返回 cd 驱动器的个数</li>
+<li><code>pygame.cdrom.CD</code>：管理驱动的类<ul>
+<li><code>pygame.cdrom.CD.init</code>：初始化</li>
+<li><code>pygame.cdrom.CD.quit</code>：退出</li>
+<li><code>pygame.cdrom.CD.get_init</code>：判断是否完成初始化</li>
+<li><code>pygame.cdrom.CD.play</code>：开始播放</li>
+<li><code>pygame.cdrom.CD.stop</code>：停止播放</li>
+<li><code>pygame.cdrom.CD.pause</code>：暂停播放</li>
+<li><code>pygame.cdrom.CD.resume</code>：恢复播放</li>
+</ul>
+</li>
+</ul>
+<h2 id="18-pygame-PixelArray"><a href="#18-pygame-PixelArray" class="headerlink" title="18.  pygame.PixelArray"></a><div id='18'>18.  pygame.PixelArray</div></h2><p>该类为pygame中直接处理访问像素的模块</p>
+<ul>
+<li><code>pygame.PixelArray.surface</code>：获取使用的 surface 对象</li>
+<li><code>pygame.PixelArray.itemsize</code>：返回像素数组项字节大小</li>
+<li><code>pygame.PixelArray.make_surface</code>：根据当前 PixelArray 创建新的 surface 对象</li>
+<li><code>pygame.PixelArray.extract</code>：从 PixelArray 中提取传递颜色</li>
+</ul>
+<h2 id="19-pygame-cursors"><a href="#19-pygame-cursors" class="headerlink" title="19. pygame.cursors"></a><div id='19'>19. pygame.cursors</div></h2><p>该类是pygame中使用光标资源的模块</p>
+<ul>
+<li><code>pygame.cursors.compile</code>：又纯字符串创建二进制光标数据</li>
+<li><code>pygame.cursors.load_xbm</code>：由xbm文件载入光标数据</li>
+</ul>
+<h2 id="20-pygame-scrap"><a href="#20-pygame-scrap" class="headerlink" title="20. pygame.scrap "></a><div id='20'>20. pygame.scrap </div></h2><p>该类是pygame中用于支持剪切板的模块</p>
+<ul>
+<li><code>pygame.scrap.init</code>：初始化</li>
+<li><code>pygame.scrap.get</code>：从剪切板获取指定类型数据</li>
+<li><code>pygame.scrap.put</code>：将数据放入剪切板</li>
+<li><code>pygame.scrap.contains</code>：检测是否获得</li>
+</ul>
+<h2 id="21-pygame-sndarray"><a href="#21-pygame-sndarray" class="headerlink" title="21. pygame.sndarray"></a><div id='21'>21. pygame.sndarray</div></h2><p>该类是pygame中访问音频采样数据的模块</p>
+<ul>
+<li><code>pygame.sndarray.array</code>：将一个音频采样复制到一个数组</li>
+<li><code>pygame.sndarray.make_sound</code>：将一个数组变成一个音频对象</li>
+</ul>
+<h2 id="22-pygame-transform"><a href="#22-pygame-transform" class="headerlink" title="22. pygame.transform"></a><div id='22'>22. pygame.transform</div></h2><p>该类是pygame中用于改变surface形态的模块</p>
+<ul>
+<li><code>pygame.transform.flip</code>：垂直和水平翻转</li>
+<li><code>pygame.transform.scale</code>：调整大小到新的分辨率</li>
+<li><code>pygame.transform.rotata</code>：旋转图像</li>
+</ul>
+<h2 id="23-pygame-tests"><a href="#23-pygame-tests" class="headerlink" title="23. pygame.tests "></a><div id='23'>23. pygame.tests </div></h2><p>该类是pygame中用于单元测试的模块</p>
+<ul>
+<li><code>pygame.tests.run</code>：运行测试套件</li>
+</ul>
+<h2 id="24-pygame-freetype"><a href="#24-pygame-freetype" class="headerlink" title="24.  pygame.freetype"></a><div id='24'>24.  pygame.freetype</div></h2><p>该类是pygame中用来加载和呈现计算机字体的模块，不常用</p>
+<h2 id="25-pygame-joystick"><a href="#25-pygame-joystick" class="headerlink" title="25. pygame.joystick"></a><div id='25'>25. pygame.joystick</div></h2><p>该类是pygame中与游戏杆、游戏手柄、追踪球交互的模块，详情参考文档</p>
+<h2 id="26-pygame-locals"><a href="#26-pygame-locals" class="headerlink" title="26. pygame.locals "></a><div id='26'>26. pygame.locals </div></h2><p>该类是pygame中定义各种常量的模块</p>
+<h2 id="27-pygame-surfarray"><a href="#27-pygame-surfarray" class="headerlink" title="27. pygame.surfarray "></a><div id='27'>27. pygame.surfarray </div></h2><p>该类是pygame中使用接口访问 surface 像素的模块，不常用</p>
+<h2 id="28-pygame-Overlay"><a href="#28-pygame-Overlay" class="headerlink" title="28. pygame.Overlay "></a><div id='28'>28. pygame.Overlay </div></h2><p>该类是pygame中用于处理视频叠加图像的模块，不常用</p>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">丁生</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="">http://fabian4.gitee.io/12400.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="javascript:;" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="index.html" target="_blank">丁生的个人博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="index5.html">python</a><a class="post-meta__tags" href="index6.html">pygame</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2020/05/07/WGjQk25ap7NhlUS.jpg" data-sites="wechat,weibo,qq,qzone"></div><link rel="stylesheet" href="static/css/share.min.css"><script src="static/js/social-share.min.js"></script></div></div><div class="post-reward"><a class="reward-button button--primary button--animated"> <i class="fa fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><img class="lazyload post-qr-code__img" src="static/picture/h3WuUjvQlqPEAzS.png" alt="微信"><div class="post-qr-code__desc">微信</div></li><li class="reward-item"><img class="lazyload post-qr-code__img" src="static/picture/9yaek4PwfNoZEHF.jpg" alt="支付宝"><div class="post-qr-code__desc">支付宝</div></li></ul></div></a></div><nav class="pagination_post" id="pagination"><div class="prev-post pull_left"><a href="2041.html"><img class="prev_cover lazyload" data-src="https://i.loli.net/2020/04/29/cR1JOeNEmYnCBHt.png" onerror="onerror=null;src='https://i.loli.net/2020/04/24/MZwypBlWXcPu6aT.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">超级玛丽的 python 实现</div></div></a></div><div class="next-post pull_right"><a href="12739.html"><img class="next_cover lazyload" data-src="https://i.loli.net/2020/04/27/FmqHTOS6Nz4b9jo.jpg" onerror="onerror=null;src='https://i.loli.net/2020/04/24/MZwypBlWXcPu6aT.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">pygame快速上手</div></div></a></div></nav><div class="relatedPosts"><div class="relatedPosts_headline"><i class="fa fa-fw fa-thumbs-up" aria-hidden="true"></i><span> 相关推荐</span></div><div class="relatedPosts_list"><div class="relatedPosts_item"><a href="12739.html" title="pygame快速上手"><img class="relatedPosts_cover lazyload" data-src="https://i.loli.net/2020/04/27/FmqHTOS6Nz4b9jo.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2020-04-27</div><div class="relatedPosts_title">pygame快速上手</div></div></a></div><div class="relatedPosts_item"><a href="2041.html" title="超级玛丽的 python 实现"><img class="relatedPosts_cover lazyload" data-src="https://i.loli.net/2020/04/29/cR1JOeNEmYnCBHt.png"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2020-04-29</div><div class="relatedPosts_title">超级玛丽的 python 实现</div></div></a></div><div class="relatedPosts_item"><a href="49637.html" title="Django 的快速上手"><img class="relatedPosts_cover lazyload" data-src="https://i.loli.net/2020/04/30/tWpPXKnCBcsfY76.png"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2020-04-30</div><div class="relatedPosts_title">Django 的快速上手</div></div></a></div><div class="relatedPosts_item"><a href="55582.html" title="Django 的数据库操作"><img class="relatedPosts_cover lazyload" data-src="static/picture/rt4ubo7Phv38CmZ.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2020-05-01</div><div class="relatedPosts_title">Django 的数据库操作</div></div></a></div><div class="relatedPosts_item"><a href="47578.html" title="Django 的员工信息系统"><img class="relatedPosts_cover lazyload" data-src="https://i.loli.net/2020/05/07/WGjQk25ap7NhlUS.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2020-05-03</div><div class="relatedPosts_title">Django 的员工信息系统</div></div></a></div></div><div class="clear_both"></div></div><hr><div id="post-comment"><div class="comment_headling"><i class="fa fa-comments fa-fw" aria-hidden="true"></i><span> 评论</span></div><div class="vcomment" id="vcomment"></div><script src="static/js/Valine.min.js"></script><script>var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+
+window.valine = new Valine({
+  el:'#vcomment',
+  notify: false,
+  verify: false,
+  appId: 'cjbkGguzmuIOFaSfn7miKri5-gzGzoHsz',
+  appKey: 'tbNXCYd7AaxYAvjBoBfhFSNx',
+  placeholder: '留下你的评论吧！',
+  avatar: 'robohash',
+  meta: guest_info,
+  pageSize: '5',
+  lang: 'zh-cn',
+  recordIP: false,
+  serverURLs: ''
+});</script></div></article></main><footer id="footer" style="background-image: url(static/image/mtUT9iSPeX8YJav.jpg)" data-type="photo"><div id="footer-wrap"><div class="copyright">&copy;2020 By 丁生</div><div class="footer_custom_text">Hi, welcome to my <a href="index.html">blog</a>!</div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><i class="fa fa-book" id="readmode" title="阅读模式"></i><i class="fa fa-plus" id="font_plus" title="放大字体"></i><i class="fa fa-minus" id="font_minus" title="缩小字体"></i><a class="translate_chn_to_cht" id="translateLink" href="javascript:translatePage();" title="简繁转换" target="_self">简</a><i class="darkmode fa fa-moon-o" id="darkmode" title="夜间模式"></i></div><div id="rightside-config-show"><div id="rightside_config" title="设置"><i class="fa fa-cog" aria-hidden="true"></i></div><a id="to_comment" href="#post-comment" title="直达评论"><i class="scroll_to_comment fa fa-comments">  </i></a><i class="fa fa-list-ul close" id="mobile-toc-button" title="目录" aria-hidden="true"></i><i class="fa fa-arrow-up" id="go-up" title="回到顶部" aria-hidden="true"></i></div></section><script src="static/js/jquery.min.js"></script><script src="static/js/utils.js"></script><script src="static/js/main.js"></script><script src="static/js/main.js"></script><script src="static/js/jquery.fancybox.min.js"></script><script src="static/js/snackbar.min.js"></script><script id="canvas_nest" color="0,0,255" opacity="0.7" zindex="-1" count="99" mobile="false" src="static/js/main.js"></script><script async="" src="static/js/busuanzi.pure.mini.js"></script><script src="static/js/instantpage.min.js" type="module"></script><script src="static/js/lazysizes.min.js" async=""></script><script src="static/js/main.js"></script></body></html>

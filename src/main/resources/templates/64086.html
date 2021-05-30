@@ -1,0 +1,180 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>白嫖阿里——搭建自己的个人服务器 | 丁生的个人博客</title><meta name="description" content="白嫖阿里——搭建自己的个人服务器"><meta name="keywords" content="服务器搭建"><meta name="author" content="丁生"><meta name="copyright" content="丁生"><meta name="format-detection" content="telephone=no"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="https://hm.baidu.com"><link rel="preconnect" href="http://ta.qq.com"><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="crossorigin"><link rel="preconnect" href="//busuanzi.ibruce.info"><meta name="baidu-site-verification" content="wIDbD23BFA"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="白嫖阿里——搭建自己的个人服务器"><meta name="twitter:description" content="白嫖阿里——搭建自己的个人服务器"><meta name="twitter:image" content="static/image/jIymExY7egrNou6.jpg"><meta property="og:type" content="article"><meta property="og:title" content="白嫖阿里——搭建自己的个人服务器"><meta property="og:url" content="http://fabian4.gitee.io/64086.html"><meta property="og:site_name" content="丁生的个人博客"><meta property="og:description" content="白嫖阿里——搭建自己的个人服务器"><meta property="og:image" content="static/image/jIymExY7egrNou6.jpg"><script src="static/js/js.cookie.min.js"></script><script>var autoChangeMode = 'false'
+var t = Cookies.get("theme")
+if (autoChangeMode == '1'){
+  var isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+  var isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
+  var isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined){
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport){
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour < 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+  }
+  } else if (t == 'light') activateLightMode()
+  else activateDarkMode()
+
+} else if (autoChangeMode == '2'){
+  now = new Date();
+  hour = now.getHours();
+  isNight = hour < 6 || hour >= 18
+  if(t === undefined) isNight? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode() 
+} else {
+  if ( t == 'dark' ) activateDarkMode()
+  else if ( t == 'light') activateLightMode()
+}
+
+function activateDarkMode(){
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+    document.querySelector('meta[name="theme-color"]').setAttribute('content','#000')
+  }
+}
+function activateLightMode(){
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+  document.querySelector('meta[name="theme-color"]').setAttribute('content','#fff')
+  }
+}</script><link rel="stylesheet" href="static/css/index.css"><link rel="stylesheet" href="static/css/font-awesome.min.css"><link rel="stylesheet" href="static/css/jquery.fancybox.min.css"><link rel="stylesheet" href="static/css/snackbar.min.css"><link rel="canonical" href=""><link rel="prev" title="pygame快速上手" href="12739.html"><link rel="next" title="Python笔记-高级语法" href="38749.html"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?21649d9cdb2cd4f62daa5d692e743c0a";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script src="static/js/stats-66550846.js" charset="UTF-8"></script><link rel="stylesheet" href="static/css/css-TitilliumWeb.css"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"cookieDomain":"http://fabian4.gitee.io/","msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: {"bookmark":{"message_prev":"按","message_next":"键将本页加入书签"},"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#2d3035","position":"bottom-left"},
+  baiduPush: true,
+  highlightCopy: true,
+  highlightLang: true,
+  highlightShrink: 'false',
+  isFontAwesomeV5: false,
+  isPhotoFigcaption: false
+  
+}</script><script>var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isSidebar: true  
+  }</script><noscript><style>
+#page-header {
+  opacity: 1
+}
+.justified-gallery img{
+  opacity: 1
+}
+</style></noscript><meta name="generator" content="Hexo 4.2.0"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="static/picture/ZWnOQA3kUGKXSjJ.jpg" onerror="onerror=null;src='https://i.loli.net/2020/04/24/LOgyfbeXRjSCGP3.gif'" alt="avatar"></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="index1.html"><div class="headline">文章</div><div class="length_num">15</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="index2.html"><div class="headline">标签</div><div class="length_num">8</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="index3.html"><div class="headline">分类</div><div class="length_num">6</div></a></div></div></div><hr><div class="menus_items"><div class="menus_item"><a class="site-page" href="index.html"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="index1.html"><i class="fa-fw fa fa-archive"></i><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="index2.html"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="index3.html"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div></div></div></div><i class="fa fa-arrow-right on" id="toggle-sidebar" aria-hidden="true">     </i><div id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#白嫖阿里——搭建自己的个人服务器"><span class="toc-number">1.</span> <span class="toc-text">白嫖阿里——搭建自己的个人服务器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#采购服务器"><span class="toc-number">1.1.</span> <span class="toc-text">采购服务器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#初始化密码和网络端口配置"><span class="toc-number">1.2.</span> <span class="toc-text">初始化密码和网络端口配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#打开阿里云的控制台，找到你的服务器实例"><span class="toc-number">1.2.1.</span> <span class="toc-text">打开阿里云的控制台，找到你的服务器实例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用终端去连接你的远程服务器"><span class="toc-number">1.3.</span> <span class="toc-text">用终端去连接你的远程服务器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#xshell"><span class="toc-number">1.3.1.</span> <span class="toc-text">xshell</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#xftp"><span class="toc-number">1.3.2.</span> <span class="toc-text">xftp</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#部署环境配置-nginx"><span class="toc-number">1.4.</span> <span class="toc-text">部署环境配置  nginx</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#访问不成功"><span class="toc-number">1.5.</span> <span class="toc-text">访问不成功</span></a></li></ol></li></ol></div></div></div><div id="body-wrap"><div id="web_bg" data-type="photo"></div><div class="post-bg" id="nav" style="background-image: url(static/image/jIymExY7egrNou6.jpg)"><div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="index.html">丁生的个人博客</a></span><span class="pull_right menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="index.html"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="index1.html"><i class="fa-fw fa fa-archive"></i><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="index2.html"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="index3.html"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div></div><span class="toggle-menu close"><a class="site-page"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a></span></span></div><div id="post-info"><div id="post-title"><div class="posttitle">白嫖阿里——搭建自己的个人服务器</div></div><div id="post-meta"><div class="meta-firstline"><time class="post-meta__date" title="发表于 2020-04-25 00:00:00"><i class="fa fa-calendar" aria-hidden="true"></i> 发表于 2020-04-25</time><span class="post-meta__categories"><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="index7.html">服务器</a></span></div><div class="meta-secondline"> <span class="post-meta-wordcount"><i class="post-meta__icon fa fa-file-word-o" aria-hidden="true"></i><span>字数总计:</span><span class="word-count">950</span><span class="post-meta__separator">|</span><i class="post-meta__icon fa fa-clock-o" aria-hidden="true"></i><span>阅读时长: 2 分钟</span></span></div><div class="meta-thirdline"><span class="post-meta-pv-cv"><span class="post-meta__separator">|</span><i class="fa fa-eye post-meta__icon" aria-hidden="true"> </i><span>阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-commentcount"><span class="post-meta__separator">|</span><i class="post-meta__icon fa fa-comment-o" aria-hidden="true"></i><span>评论数:</span><a href="#post-comment" itemprop="discussionUrl"><span class="valine-comment-count comment-count" data-xid="/64086.html" itemprop="commentCount"></span></a></span></div></div></div></div><main class="layout_post" id="content-inner"><article id="post"><div id="article-container"><h1 id="白嫖阿里——搭建自己的个人服务器"><a href="#白嫖阿里——搭建自己的个人服务器" class="headerlink" title="白嫖阿里——搭建自己的个人服务器"></a>白嫖阿里——搭建自己的个人服务器</h1><p>妈妈，妈妈！我今天终于白嫖了阿里！！！！！</p>
+<p>这里先放一波链接<a href="javascript:;" target="_blank" rel="noopener">https://developer.aliyun.com/adc/college/</a></p>
+<p><img src="static/picture/OVzAJZRNjLMB82U.gif" class="lazyload" data-src="https://i.loli.net/2020/05/02/RL3gdBOmrWDbSZX.png" alt=""></p>
+<p><img src="static/picture/OVzAJZRNjLMB82U.gif" class="lazyload" data-src="https://i.loli.net/2020/05/02/bVUtSx7W8l1ifIZ.png" alt=""></p>
+<p>这个活动是两月份开始的，那段时间可能每天蹲点去抢服务器，现在已经没必要那么麻烦了。</p>
+<p>连接地址在<a href="javascript:;" target="_blank" rel="noopener">这里</a>，快去白嫖吧。六个月可以让你好好爽一手了(手动狗头)</p>
+<p>你只需要</p>
+<ul>
+<li>注册阿里云账号</li>
+<li>实名认证</li>
+<li>学生认证（好像非学生24岁以下也能领一台）</li>
+</ul>
+<h2 id="采购服务器"><a href="#采购服务器" class="headerlink" title="采购服务器"></a>采购服务器</h2><p>按着平台的流程一步一步进行下去就行了，选默认配置然后选系统，我这里选的是Linux的Centos7。</p>
+<p>最后是付款，不得不说白嫖确实有点爽</p>
+<p><img src="static/picture/OVzAJZRNjLMB82U.gif" class="lazyload" data-src="https://i.loli.net/2020/05/02/nYz3kiywGuedH9T.png" alt=""></p>
+<h2 id="初始化密码和网络端口配置"><a href="#初始化密码和网络端口配置" class="headerlink" title="初始化密码和网络端口配置"></a>初始化密码和网络端口配置</h2><h3 id="打开阿里云的控制台，找到你的服务器实例"><a href="#打开阿里云的控制台，找到你的服务器实例" class="headerlink" title="打开阿里云的控制台，找到你的服务器实例"></a>打开阿里云的控制台，找到你的服务器实例</h3><p>这里面有你的服务器的基本配置和对外的公网IP地址</p>
+<p><img src="static/picture/OVzAJZRNjLMB82U.gif" class="lazyload" data-src="static/picture/XbhyExSNl7OJIqs.png" alt="image-20200502181323460"></p>
+<p>第一次需要重置一下自己的root密码，然后重启一下就行了</p>
+<p><img src="static/picture/OVzAJZRNjLMB82U.gif" class="lazyload" data-src="https://i.loli.net/2020/05/02/ENW6bXwR37utsoK.png" alt=""></p>
+<p>接下来就是你的网络端口配置了，在 <strong>网络与安全——&gt;安全组——&gt;配置规则</strong> 中开启你需要的端口</p>
+<blockquote>
+<p>这里的端口如果不开启的话，我们是不能通过公网的IP访问到的</p>
+</blockquote>
+<p><img src="static/picture/OVzAJZRNjLMB82U.gif" class="lazyload" data-src="static/picture/XpU6OaExVT48Pyv.png" alt=""></p>
+<h2 id="用终端去连接你的远程服务器"><a href="#用终端去连接你的远程服务器" class="headerlink" title="用终端去连接你的远程服务器"></a>用终端去连接你的远程服务器</h2><p>这里面可用的终端很多，也可以使用阿里云平台提供的终端。我这里使用的是 <strong>xshell</strong> 来远程连接服务器，用 <strong>xftp</strong> 来进行文件传输。两款软件对个人使用都免费，这里是<a href="javascript:;" target="_blank" rel="noopener">官网</a></p>
+<h3 id="xshell"><a href="#xshell" class="headerlink" title="xshell"></a><strong>xshell</strong></h3><img src="static/picture/OVzAJZRNjLMB82U.gif" class="lazyload" data-src="https://i.loli.net/2020/05/02/jhpMLGOActgEB7r.png" alt="image-20200502171935886">
+
+<p>这里输入自己的公网IP，然后验证直接的账号密码就可以连接上我们的服务器了</p>
+<img src="static/picture/OVzAJZRNjLMB82U.gif" class="lazyload" data-src="static/picture/LFOA1bux2qgEGQo.png" alt="image-20200502173047281">
+
+<p>当出现欢迎提示就是连接成功了，在这里就可以进行Linux的命令行操作了</p>
+<h3 id="xftp"><a href="#xftp" class="headerlink" title="xftp"></a><strong>xftp</strong></h3><p>连接是和<strong>xshell</strong>一样子的，通过公网IP和账号密码连接</p>
+<blockquote>
+<p>因为FTP协议默认是不允许使用root账户登录的，所有这里需要我们创建新账户或者修改ftp的配置文件</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ../   <span class="comment"># 退出root目录</span></span><br><span class="line"><span class="built_in">cd</span> /etc/vsftpd   <span class="comment"># 进入ftp的配置目录</span></span><br><span class="line">vim ftpuser      <span class="comment"># 修改用户文件</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"># Users that are not allowed <span class="keyword">to</span> login via ftp</span><br><span class="line">root</span><br><span class="line">bin</span><br><span class="line">daemon</span><br><span class="line">adm</span><br><span class="line"><span class="keyword">lp</span></span><br><span class="line"><span class="keyword">sync</span></span><br><span class="line">shutdown</span><br><span class="line">halt</span><br><span class="line">mail</span><br><span class="line">news</span><br><span class="line">uucp</span><br><span class="line">operator</span><br><span class="line">games</span><br><span class="line">nobody</span><br><span class="line">~                                                                                                                                                                                                   </span><br><span class="line">~                                                                                                                                                                                                   </span><br><span class="line">~                                                                                                                                                                                                   </span><br><span class="line">~</span><br></pre></td></tr></table></figure>
+
+<p>将第一行的root删除并保存退出</p>
+<ul>
+<li>按Esc退出编辑模式</li>
+<li>输入<code>:wq</code>保存并退出</li>
+</ul>
+<blockquote>
+<p>这里如果有什么问题可以其查一些vim的语法教程</p>
+</blockquote>
+<p>然后我们就能使用 <strong>xftp</strong> 来连接我们的服务器进行文件传输，直接拖动就可以直接传输</p>
+<img src="static/picture/OVzAJZRNjLMB82U.gif" class="lazyload" data-src="https://i.loli.net/2020/05/02/AyM7lrDafHXYpKz.png" alt="image-20200502173824888" style="zoom:50%;">
+
+<h2 id="部署环境配置-nginx"><a href="#部署环境配置-nginx" class="headerlink" title="部署环境配置  nginx"></a>部署环境配置  <strong>nginx</strong></h2><p>这里需要配置一些基本的环境</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum install -y jdk    <span class="comment"># 安装jdk</span></span><br><span class="line">yum install -y nginx  <span class="comment"># 安装nginx</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>这里阿里云的服务器直接帮我们装好了 Centos 的镜像，yum及其镜像都已经配置好了，我们只需要直接安装就行了</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start nginx <span class="comment"># 启动nginx</span></span><br></pre></td></tr></table></figure>
+
+<p>现在我们直接通过公网的IP地址就能访问到我们的 nginx 主页了</p>
+<p>我们还可以安装tomcat，将项目以 war 包的形式部署到服务器上</p>
+<p>还可以通过服务器做一些tomcat集群、redis集群的调试联系</p>
+<p>也可以将我们的个人博客部署到自己的服务器上，绑定到自己备案的域名就可以了。</p>
+<h2 id="访问不成功"><a href="#访问不成功" class="headerlink" title="访问不成功"></a>访问不成功</h2><p>如果在部署好了之后，通过公网IP访问不到自己的项目可以通过下面几种方式自查</p>
+<ul>
+<li>本地电脑 ping 服务器 ip</li>
+<li>阿里云控制台查看端口开放情况</li>
+<li>使用 <strong>tracetcp</strong> 进行网段网关检测</li>
+<li>检查服务器防火墙</li>
+<li>检查服务器端口是否开发</li>
+</ul>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">丁生</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="">http://fabian4.gitee.io/64086.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="javascript:;" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="index.html" target="_blank">丁生的个人博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="index8.html">服务器搭建</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2020/05/07/WGjQk25ap7NhlUS.jpg" data-sites="wechat,weibo,qq,qzone"></div><link rel="stylesheet" href="static/css/share.min.css"><script src="static/js/social-share.min.js"></script></div></div><div class="post-reward"><a class="reward-button button--primary button--animated"> <i class="fa fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><img class="lazyload post-qr-code__img" src="static/picture/h3WuUjvQlqPEAzS.png" alt="微信"><div class="post-qr-code__desc">微信</div></li><li class="reward-item"><img class="lazyload post-qr-code__img" src="static/picture/9yaek4PwfNoZEHF.jpg" alt="支付宝"><div class="post-qr-code__desc">支付宝</div></li></ul></div></a></div><nav class="pagination_post" id="pagination"><div class="prev-post pull_left"><a href="12739.html"><img class="prev_cover lazyload" data-src="https://i.loli.net/2020/04/27/FmqHTOS6Nz4b9jo.jpg" onerror="onerror=null;src='https://i.loli.net/2020/04/24/MZwypBlWXcPu6aT.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">pygame快速上手</div></div></a></div><div class="next-post pull_right"><a href="38749.html"><img class="next_cover lazyload" data-src="https://i.loli.net/2020/05/01/9wpbI6VylYWotaA.jpg" onerror="onerror=null;src='https://i.loli.net/2020/04/24/MZwypBlWXcPu6aT.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Python笔记-高级语法</div></div></a></div></nav><hr><div id="post-comment"><div class="comment_headling"><i class="fa fa-comments fa-fw" aria-hidden="true"></i><span> 评论</span></div><div class="vcomment" id="vcomment"></div><script src="static/js/Valine.min.js"></script><script>var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+
+window.valine = new Valine({
+  el:'#vcomment',
+  notify: false,
+  verify: false,
+  appId: 'cjbkGguzmuIOFaSfn7miKri5-gzGzoHsz',
+  appKey: 'tbNXCYd7AaxYAvjBoBfhFSNx',
+  placeholder: '留下你的评论吧！',
+  avatar: 'robohash',
+  meta: guest_info,
+  pageSize: '5',
+  lang: 'zh-cn',
+  recordIP: false,
+  serverURLs: ''
+});</script></div></article></main><footer id="footer" style="background-image: url(static/image/jIymExY7egrNou6.jpg)" data-type="photo"><div id="footer-wrap"><div class="copyright">&copy;2020 By 丁生</div><div class="footer_custom_text">Hi, welcome to my <a href="index.html">blog</a>!</div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><i class="fa fa-book" id="readmode" title="阅读模式"></i><i class="fa fa-plus" id="font_plus" title="放大字体"></i><i class="fa fa-minus" id="font_minus" title="缩小字体"></i><a class="translate_chn_to_cht" id="translateLink" href="javascript:translatePage();" title="简繁转换" target="_self">简</a><i class="darkmode fa fa-moon-o" id="darkmode" title="夜间模式"></i></div><div id="rightside-config-show"><div id="rightside_config" title="设置"><i class="fa fa-cog" aria-hidden="true"></i></div><a id="to_comment" href="#post-comment" title="直达评论"><i class="scroll_to_comment fa fa-comments">  </i></a><i class="fa fa-list-ul close" id="mobile-toc-button" title="目录" aria-hidden="true"></i><i class="fa fa-arrow-up" id="go-up" title="回到顶部" aria-hidden="true"></i></div></section><script src="static/js/jquery.min.js"></script><script src="static/js/utils.js"></script><script src="static/js/main.js"></script><script src="static/js/main.js"></script><script src="static/js/jquery.fancybox.min.js"></script><script src="static/js/snackbar.min.js"></script><script id="canvas_nest" color="0,0,255" opacity="0.7" zindex="-1" count="99" mobile="false" src="static/js/main.js"></script><script async="" src="static/js/busuanzi.pure.mini.js"></script><script src="static/js/instantpage.min.js" type="module"></script><script src="static/js/lazysizes.min.js" async=""></script><script src="static/js/main.js"></script></body></html>
