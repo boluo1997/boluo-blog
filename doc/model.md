@@ -5,7 +5,7 @@
 |**user_id**|**int**|
 |user_name|string|
 |password|string|
-|nick|string|
+|nick_name|string|
 |email|string|
 |head_img_url|string|
 |create_time|timestamp|
