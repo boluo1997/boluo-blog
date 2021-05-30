@@ -1,0 +1,191 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Spring Bean配置——注解配Bean | 丁生的个人博客</title><meta name="description" content="注解配Bean"><meta name="keywords" content="java,spring"><meta name="author" content="丁生"><meta name="copyright" content="丁生"><meta name="format-detection" content="telephone=no"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="https://hm.baidu.com"><link rel="preconnect" href="http://ta.qq.com"><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="crossorigin"><link rel="preconnect" href="//busuanzi.ibruce.info"><meta name="baidu-site-verification" content="wIDbD23BFA"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Spring Bean配置——注解配Bean"><meta name="twitter:description" content="注解配Bean"><meta name="twitter:image" content="static/image/UuKkAcjq6rZzs8v.jpg"><meta property="og:type" content="article"><meta property="og:title" content="Spring Bean配置——注解配Bean"><meta property="og:url" content="http://fabian4.gitee.io/60824.html"><meta property="og:site_name" content="丁生的个人博客"><meta property="og:description" content="注解配Bean"><meta property="og:image" content="static/image/UuKkAcjq6rZzs8v.jpg"><script src="static/js/js.cookie.min.js"></script><script>var autoChangeMode = 'false'
+var t = Cookies.get("theme")
+if (autoChangeMode == '1'){
+  var isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+  var isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
+  var isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined){
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport){
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour < 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+  }
+  } else if (t == 'light') activateLightMode()
+  else activateDarkMode()
+
+} else if (autoChangeMode == '2'){
+  now = new Date();
+  hour = now.getHours();
+  isNight = hour < 6 || hour >= 18
+  if(t === undefined) isNight? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode() 
+} else {
+  if ( t == 'dark' ) activateDarkMode()
+  else if ( t == 'light') activateLightMode()
+}
+
+function activateDarkMode(){
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+    document.querySelector('meta[name="theme-color"]').setAttribute('content','#000')
+  }
+}
+function activateLightMode(){
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+  document.querySelector('meta[name="theme-color"]').setAttribute('content','#fff')
+  }
+}</script><link rel="stylesheet" href="static/css/index.css"><link rel="stylesheet" href="static/css/font-awesome.min.css"><link rel="stylesheet" href="static/css/jquery.fancybox.min.css"><link rel="stylesheet" href="static/css/snackbar.min.css"><link rel="canonical" href="http://fabian4.gitee.io/60824.html"><link rel="prev" title="Spring AOP的配置和应用" href="http://fabian4.gitee.io/57175.html"><link rel="next" title="Spring Bean配置——XML配Bean" href="http://fabian4.gitee.io/3026.html"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?21649d9cdb2cd4f62daa5d692e743c0a";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script src="static/js/stats-66550846.js" charset="UTF-8"></script><link rel="stylesheet" href="static/css/css-TitilliumWeb.css"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"cookieDomain":"http://fabian4.gitee.io/","msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: {"bookmark":{"message_prev":"按","message_next":"键将本页加入书签"},"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#2d3035","position":"bottom-left"},
+  baiduPush: true,
+  highlightCopy: true,
+  highlightLang: true,
+  highlightShrink: 'false',
+  isFontAwesomeV5: false,
+  isPhotoFigcaption: false
+  
+}</script><script>var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isSidebar: true  
+  }</script><noscript><style>
+#page-header {
+  opacity: 1
+}
+.justified-gallery img{
+  opacity: 1
+}
+</style></noscript><meta name="generator" content="Hexo 4.2.0"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="static/picture/ZWnOQA3kUGKXSjJ.jpg" onerror="onerror=null;src='https://i.loli.net/2020/04/24/LOgyfbeXRjSCGP3.gif'" alt="avatar"></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="index1.html"><div class="headline">文章</div><div class="length_num">15</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="index2.html"><div class="headline">标签</div><div class="length_num">8</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="index3.html"><div class="headline">分类</div><div class="length_num">6</div></a></div></div></div><hr><div class="menus_items"><div class="menus_item"><a class="site-page" href="index.html"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="index1.html"><i class="fa-fw fa fa-archive"></i><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="index2.html"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="index3.html"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div></div></div></div><i class="fa fa-arrow-right on" id="toggle-sidebar" aria-hidden="true">     </i><div id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Spring-IoC中的Spring-Bean配置——注解配Bean"><span class="toc-number">1.</span> <span class="toc-text">Spring IoC中的Spring Bean配置——注解配Bean</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、用于创建对象"><span class="toc-number">1.1.</span> <span class="toc-text">一、用于创建对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、用于注入数据"><span class="toc-number">1.2.</span> <span class="toc-text">二、用于注入数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、用于作用范围"><span class="toc-number">1.3.</span> <span class="toc-text">三、用于作用范围</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、用于生命周期"><span class="toc-number">1.4.</span> <span class="toc-text">四、用于生命周期</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、其他注解"><span class="toc-number">1.5.</span> <span class="toc-text">五、其他注解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六、容器构造方法补充"><span class="toc-number">1.6.</span> <span class="toc-text">六、容器构造方法补充</span></a></li></ol></li></ol></div></div></div><div id="body-wrap"><div id="web_bg" data-type="photo"></div><div class="post-bg" id="nav" style="background-image: url(static/image/UuKkAcjq6rZzs8v.jpg)"><div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="index.html">丁生的个人博客</a></span><span class="pull_right menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="index.html"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="index1.html"><i class="fa-fw fa fa-archive"></i><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="index2.html"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="index3.html"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div></div><span class="toggle-menu close"><a class="site-page"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a></span></span></div><div id="post-info"><div id="post-title"><div class="posttitle">Spring Bean配置——注解配Bean</div></div><div id="post-meta"><div class="meta-firstline"><time class="post-meta__date" title="发表于 2020-04-05 00:00:00"><i class="fa fa-calendar" aria-hidden="true"></i> 发表于 2020-04-05</time><span class="post-meta__categories"><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="javascript:;">Spring框架</a></span></div><div class="meta-secondline"> <span class="post-meta-wordcount"><i class="post-meta__icon fa fa-file-word-o" aria-hidden="true"></i><span>字数总计:</span><span class="word-count">648</span><span class="post-meta__separator">|</span><i class="post-meta__icon fa fa-clock-o" aria-hidden="true"></i><span>阅读时长: 2 分钟</span></span></div><div class="meta-thirdline"><span class="post-meta-pv-cv"><span class="post-meta__separator">|</span><i class="fa fa-eye post-meta__icon" aria-hidden="true"> </i><span>阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-commentcount"><span class="post-meta__separator">|</span><i class="post-meta__icon fa fa-comment-o" aria-hidden="true"></i><span>评论数:</span><a href="#post-comment" itemprop="discussionUrl"><span class="valine-comment-count comment-count" data-xid="/60824.html" itemprop="commentCount"></span></a></span></div></div></div></div><main class="layout_post" id="content-inner"><article id="post"><div id="article-container"><h1 id="Spring-IoC中的Spring-Bean配置——注解配Bean"><a href="#Spring-IoC中的Spring-Bean配置——注解配Bean" class="headerlink" title="Spring IoC中的Spring Bean配置——注解配Bean"></a>Spring IoC中的Spring Bean配置——注解配Bean</h1><p>在这把我们来解释Bean的另一种配置方式：注解配置</p>
+<p>注解的分类：</p>
+<ul>
+<li>用于创建对象：类似于bean标签</li>
+<li>用于注入数据：类似于property标签</li>
+<li>用于作用范围：类似于scope属性</li>
+<li>用于生命周期：类似于 init-method 和 destory-method属性</li>
+</ul>
+<p><strong>注意要在xml中首先配置初始化时包扫描路径才能使用注解</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">"java"</span>&gt;</span><span class="tag">&lt;/<span class="name">context:component-scan</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="一、用于创建对象"><a href="#一、用于创建对象" class="headerlink" title="一、用于创建对象"></a>一、用于创建对象</h2><ul>
+<li><p><strong>@Component</strong></p>
+<ul>
+<li>写在类上面</li>
+<li>参数为 id ，若不写则默认 id 为类名小写</li>
+</ul>
+</li>
+<li><p><strong>@Controller 一般用于表现层</strong></p>
+</li>
+<li><p><strong>@Service      一般用于业务层</strong></p>
+</li>
+<li><p><strong>@Repository 一般用于持久层</strong></p>
+<h2 id="二、用于注入数据"><a href="#二、用于注入数据" class="headerlink" title="二、用于注入数据"></a>二、用于注入数据</h2></li>
+<li><p><strong>@Autowirde</strong>：</p>
+<ul>
+<li>自动按照类型注入，只有容器中有一个唯一的bean对象类型和要注入的变量类型匹配，就可以注入成功</li>
+<li>可以是成员变量上和方法上</li>
+</ul>
+</li>
+<li><p><strong>@Qualifier</strong>：</p>
+<ul>
+<li>在按照类注入的基础上再按照名称注入</li>
+<li>给成员变量注入是<strong>不能单独使用</strong>，和@Autowirde配合使用</li>
+<li>可以配置在方法参数中</li>
+</ul>
+</li>
+<li><p><strong>@Resource</strong>：实现上述两者功能</p>
+</li>
+</ul>
+<p><strong>上述三个注解只能注入bean类型数据，基本数据类型和String无法实现</strong></p>
+<p><strong>集合的注入只能通过 xml 来实现</strong></p>
+<ul>
+<li><strong>@Value</strong>：用于注入基本数据类型和String<ul>
+<li>可以使用 spEl 即 spring的 El 表达式 ${表达式}</li>
+<li>value属性用于指定数据的值</li>
+</ul>
+</li>
+</ul>
+<h2 id="三、用于作用范围"><a href="#三、用于作用范围" class="headerlink" title="三、用于作用范围"></a>三、用于作用范围</h2><ul>
+<li><p><strong>@Scope</strong>：用于指定作用范围</p>
+<p>value用于指定范围</p>
+<ul>
+<li>singleton    单例（默认）</li>
+<li>prototype    多例</li>
+</ul>
+</li>
+</ul>
+<h2 id="四、用于生命周期"><a href="#四、用于生命周期" class="headerlink" title="四、用于生命周期"></a>四、用于生命周期</h2><ul>
+<li><strong>@PreDestroy</strong>：销毁方法</li>
+<li><strong>@PostConstruct</strong>：初始化方法</li>
+</ul>
+<h2 id="五、其他注解"><a href="#五、其他注解" class="headerlink" title="五、其他注解"></a>五、其他注解</h2><ul>
+<li><p><strong>@Configuration</strong>：指定当前类为配置类，可以实现在类中配置，脱离 xml。</p>
+<p>只有当对象为AnnotationConfigApplicationContext创建参数时可以不写</p>
+</li>
+<li><p><strong>@ComponentScan</strong>：指定spring在创建容器时要扫描的包。</p>
+</li>
+<li><p><strong>@Bean</strong>：将当前方法的返回值存入容器，属性为 id，不写时，默认为当前方法名称。</p>
+<p>当用注解配置的方法含参数时，spring会自动去容器中自动找对象</p>
+</li>
+<li><p><strong>@Import</strong>：用于导入其他配置类，参数为类的字节码文件，写在父配置类里</p>
+</li>
+<li><p><strong>@PropertySource</strong>：导入Property配置文件，关键字为classPath：后跟类路径。</p>
+</li>
+</ul>
+<h2 id="六、容器构造方法补充"><a href="#六、容器构造方法补充" class="headerlink" title="六、容器构造方法补充"></a>六、容器构造方法补充</h2><p><strong><code>AnnotationConfigApplicationContext</code></strong>：读取注解创建容器<br>当使用注解类注解时，工程中不再存在xml 文件，所以也就不能使用其他两种构造方法了</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ApplicationContext ac = <span class="keyword">new</span> AnnotationConfigApplicationContext(注解类<span class="class">.<span class="keyword">class</span>)</span>;</span><br></pre></td></tr></table></figure>
+
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">丁生</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="javascript:;">http://fabian4.gitee.io/60824.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="javascript:;" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="index.html" target="_blank">丁生的个人博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="index10.html">java</a><a class="post-meta__tags" href="index11.html">spring</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2020/05/07/WGjQk25ap7NhlUS.jpg" data-sites="wechat,weibo,qq,qzone"></div><link rel="stylesheet" href="static/css/share.min.css"><script src="static/js/social-share.min.js"></script></div></div><div class="post-reward"><a class="reward-button button--primary button--animated"> <i class="fa fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><img class="lazyload post-qr-code__img" src="static/picture/h3WuUjvQlqPEAzS.png" alt="微信"><div class="post-qr-code__desc">微信</div></li><li class="reward-item"><img class="lazyload post-qr-code__img" src="static/picture/9yaek4PwfNoZEHF.jpg" alt="支付宝"><div class="post-qr-code__desc">支付宝</div></li></ul></div></a></div><nav class="pagination_post" id="pagination"><div class="prev-post pull_left"><a href="57175.html"><img class="prev_cover lazyload" data-src="https://i.loli.net/2020/04/24/186zIDlrCPFeuXQ.jpg" onerror="onerror=null;src='https://i.loli.net/2020/04/24/MZwypBlWXcPu6aT.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Spring AOP的配置和应用</div></div></a></div><div class="next-post pull_right"><a href="3026.html"><img class="next_cover lazyload" data-src="https://i.loli.net/2020/04/24/IdxtVCnPlOoFfLW.jpg" onerror="onerror=null;src='https://i.loli.net/2020/04/24/MZwypBlWXcPu6aT.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Spring Bean配置——XML配Bean</div></div></a></div></nav><div class="relatedPosts"><div class="relatedPosts_headline"><i class="fa fa-fw fa-thumbs-up" aria-hidden="true"></i><span> 相关推荐</span></div><div class="relatedPosts_list"><div class="relatedPosts_item"><a href="3026.html" title="Spring Bean配置——XML配Bean"><img class="relatedPosts_cover lazyload" data-src="https://i.loli.net/2020/04/24/IdxtVCnPlOoFfLW.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2020-04-01</div><div class="relatedPosts_title">Spring Bean配置——XML配Bean</div></div></a></div><div class="relatedPosts_item"><a href="17692.html" title="浅谈IoC和AOP"><img class="relatedPosts_cover lazyload" data-src="https://i.loli.net/2020/04/24/2c3XOeVFzLdnAE1.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2020-03-28</div><div class="relatedPosts_title">浅谈IoC和AOP</div></div></a></div><div class="relatedPosts_item"><a href="57175.html" title="Spring AOP的配置和应用"><img class="relatedPosts_cover lazyload" data-src="https://i.loli.net/2020/04/24/186zIDlrCPFeuXQ.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2020-04-12</div><div class="relatedPosts_title">Spring AOP的配置和应用</div></div></a></div><div class="relatedPosts_item"><a href="2861.html" title="SSM框架实战"><img class="relatedPosts_cover lazyload" data-src="https://i.loli.net/2020/04/24/k7BNrpecHJqOE2o.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2020-03-24</div><div class="relatedPosts_title">SSM框架实战</div></div></a></div><div class="relatedPosts_item"><a href="56408.html" title="Spring Boot 笔记"><img class="relatedPosts_cover lazyload" data-src="static/picture/1ncfhPdosVSEkZb.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2020-04-15</div><div class="relatedPosts_title">Spring Boot 笔记</div></div></a></div></div><div class="clear_both"></div></div><hr><div id="post-comment"><div class="comment_headling"><i class="fa fa-comments fa-fw" aria-hidden="true"></i><span> 评论</span></div><div class="vcomment" id="vcomment"></div><script src="static/js/Valine.min.js"></script><script>var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+
+window.valine = new Valine({
+  el:'#vcomment',
+  notify: false,
+  verify: false,
+  appId: 'cjbkGguzmuIOFaSfn7miKri5-gzGzoHsz',
+  appKey: 'tbNXCYd7AaxYAvjBoBfhFSNx',
+  placeholder: '留下你的评论吧！',
+  avatar: 'robohash',
+  meta: guest_info,
+  pageSize: '5',
+  lang: 'zh-cn',
+  recordIP: false,
+  serverURLs: ''
+});</script></div></article></main><footer id="footer" style="background-image: url(static/image/UuKkAcjq6rZzs8v.jpg)" data-type="photo"><div id="footer-wrap"><div class="copyright">&copy;2020 By 丁生</div><div class="footer_custom_text">Hi, welcome to my <a href="index.html">blog</a>!</div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><i class="fa fa-book" id="readmode" title="阅读模式"></i><i class="fa fa-plus" id="font_plus" title="放大字体"></i><i class="fa fa-minus" id="font_minus" title="缩小字体"></i><a class="translate_chn_to_cht" id="translateLink" href="javascript:translatePage();" title="简繁转换" target="_self">简</a><i class="darkmode fa fa-moon-o" id="darkmode" title="夜间模式"></i></div><div id="rightside-config-show"><div id="rightside_config" title="设置"><i class="fa fa-cog" aria-hidden="true"></i></div><a id="to_comment" href="#post-comment" title="直达评论"><i class="scroll_to_comment fa fa-comments">  </i></a><i class="fa fa-list-ul close" id="mobile-toc-button" title="目录" aria-hidden="true"></i><i class="fa fa-arrow-up" id="go-up" title="回到顶部" aria-hidden="true"></i></div></section><script src="static/js/jquery.min.js"></script><script src="static/js/utils.js"></script><script src="static/js/main.js"></script><script src="static/js/main.js"></script><script src="static/js/jquery.fancybox.min.js"></script><script src="static/js/snackbar.min.js"></script><script id="canvas_nest" color="0,0,255" opacity="0.7" zindex="-1" count="99" mobile="false" src="static/js/main.js"></script><script async="" src="static/js/busuanzi.pure.mini.js"></script><script src="static/js/instantpage.min.js" type="module"></script><script src="static/js/lazysizes.min.js" async=""></script><script src="static/js/main.js"></script></body></html>

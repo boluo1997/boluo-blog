@@ -1,4 +1,4 @@
-package com.boluo.blog.common;
+package com.boluo.blog.response;
 
 import com.alibaba.fastjson.JSON;
 import com.boluo.blog.enums.SystemResultCode;
@@ -10,11 +10,11 @@ import java.io.Serializable;
  * ClassName:ResultInfo <br/>
  * Function: 定义系统统一的响应结果信息. <br/>
  * Reason:	 定义系统统一的响应结果信息. <br/>
- * Date:     2018年4月24日 下午7:07:08 <br/>
+ * Date:     2021年5月30日 下午20:15:08 <br/>
  *
  * @author java
  * @see
- * @since JDK 1.6
+ * @since JDK 1.8
  */
 // @ApiModel(description= "响应状态信息")
 public class ResultInfo implements Serializable {

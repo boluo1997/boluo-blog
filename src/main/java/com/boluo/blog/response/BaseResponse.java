@@ -1,4 +1,4 @@
-package com.boluo.blog.common;
+package com.boluo.blog.response;
 
 // import io.swagger.annotations.ApiModel;
 import com.boluo.blog.enums.SystemResultCode;

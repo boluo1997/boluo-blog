@@ -1,0 +1,172 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>浅谈IoC和AOP | 丁生的个人博客</title><meta name="description" content="浅谈IoC和AOP"><meta name="keywords" content="java,spring"><meta name="author" content="丁生"><meta name="copyright" content="丁生"><meta name="format-detection" content="telephone=no"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="https://hm.baidu.com"><link rel="preconnect" href="http://ta.qq.com"><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="crossorigin"><link rel="preconnect" href="//busuanzi.ibruce.info"><meta name="baidu-site-verification" content="wIDbD23BFA"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="浅谈IoC和AOP"><meta name="twitter:description" content="浅谈IoC和AOP"><meta name="twitter:image" content="static/image/2c3XOeVFzLdnAE1.jpg"><meta property="og:type" content="article"><meta property="og:title" content="浅谈IoC和AOP"><meta property="og:url" content="http://fabian4.gitee.io/17692.html"><meta property="og:site_name" content="丁生的个人博客"><meta property="og:description" content="浅谈IoC和AOP"><meta property="og:image" content="static/image/2c3XOeVFzLdnAE1.jpg"><script src="static/js/js.cookie.min.js"></script><script>var autoChangeMode = 'false'
+var t = Cookies.get("theme")
+if (autoChangeMode == '1'){
+  var isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+  var isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
+  var isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined){
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport){
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour < 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+  }
+  } else if (t == 'light') activateLightMode()
+  else activateDarkMode()
+
+} else if (autoChangeMode == '2'){
+  now = new Date();
+  hour = now.getHours();
+  isNight = hour < 6 || hour >= 18
+  if(t === undefined) isNight? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode() 
+} else {
+  if ( t == 'dark' ) activateDarkMode()
+  else if ( t == 'light') activateLightMode()
+}
+
+function activateDarkMode(){
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+    document.querySelector('meta[name="theme-color"]').setAttribute('content','#000')
+  }
+}
+function activateLightMode(){
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+  document.querySelector('meta[name="theme-color"]').setAttribute('content','#fff')
+  }
+}</script><link rel="stylesheet" href="static/css/index.css"><link rel="stylesheet" href="static/css/font-awesome.min.css"><link rel="stylesheet" href="static/css/jquery.fancybox.min.css"><link rel="stylesheet" href="static/css/snackbar.min.css"><link rel="canonical" href="http://fabian4.gitee.io/17692.html"><link rel="prev" title="Spring Bean配置——XML配Bean" href="http://fabian4.gitee.io/3026.html"><link rel="next" title="SSM框架实战" href="http://fabian4.gitee.io/2861.html"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?21649d9cdb2cd4f62daa5d692e743c0a";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script src="static/js/stats-66550846.js" charset="UTF-8"></script><link rel="stylesheet" href="static/css/css-TitilliumWeb.css"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"cookieDomain":"http://fabian4.gitee.io/","msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: {"bookmark":{"message_prev":"按","message_next":"键将本页加入书签"},"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#2d3035","position":"bottom-left"},
+  baiduPush: true,
+  highlightCopy: true,
+  highlightLang: true,
+  highlightShrink: 'false',
+  isFontAwesomeV5: false,
+  isPhotoFigcaption: false
+  
+}</script><script>var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isSidebar: true  
+  }</script><noscript><style>
+#page-header {
+  opacity: 1
+}
+.justified-gallery img{
+  opacity: 1
+}
+</style></noscript><meta name="generator" content="Hexo 4.2.0"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="static/picture/ZWnOQA3kUGKXSjJ.jpg" onerror="onerror=null;src='https://i.loli.net/2020/04/24/LOgyfbeXRjSCGP3.gif'" alt="avatar"></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="index1.html"><div class="headline">文章</div><div class="length_num">15</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="index2.html"><div class="headline">标签</div><div class="length_num">8</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="index3.html"><div class="headline">分类</div><div class="length_num">6</div></a></div></div></div><hr><div class="menus_items"><div class="menus_item"><a class="site-page" href="index.html"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="index1.html"><i class="fa-fw fa fa-archive"></i><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="index2.html"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="index3.html"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div></div></div></div><i class="fa fa-arrow-right on" id="toggle-sidebar" aria-hidden="true">     </i><div id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、Spring简介"><span class="toc-number">1.</span> <span class="toc-text">一、Spring简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#概述"><span class="toc-number">1.1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Spring框架"><span class="toc-number">1.2.</span> <span class="toc-text">Spring框架</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#优势"><span class="toc-number">1.3.</span> <span class="toc-text">优势</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、Spring框架的IoC"><span class="toc-number">2.</span> <span class="toc-text">二、Spring框架的IoC</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#几个概念"><span class="toc-number">2.1.</span> <span class="toc-text">几个概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IoC底层"><span class="toc-number">2.2.</span> <span class="toc-text">IoC底层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IoC容器"><span class="toc-number">2.3.</span> <span class="toc-text">IoC容器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置方式"><span class="toc-number">2.4.</span> <span class="toc-text">配置方式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、Spring框架的AOP"><span class="toc-number">3.</span> <span class="toc-text">三、Spring框架的AOP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#概念"><span class="toc-number">3.1.</span> <span class="toc-text">概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#底层"><span class="toc-number">3.2.</span> <span class="toc-text">底层</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、Spring的Maven依赖"><span class="toc-number">4.</span> <span class="toc-text">四、Spring的Maven依赖</span></a></li></ol></div></div></div><div id="body-wrap"><div id="web_bg" data-type="photo"></div><div class="post-bg" id="nav" style="background-image: url(static/image/2c3XOeVFzLdnAE1.jpg)"><div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="index.html">丁生的个人博客</a></span><span class="pull_right menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="index.html"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="index1.html"><i class="fa-fw fa fa-archive"></i><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="index2.html"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="index3.html"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div></div><span class="toggle-menu close"><a class="site-page"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a></span></span></div><div id="post-info"><div id="post-title"><div class="posttitle">浅谈IoC和AOP</div></div><div id="post-meta"><div class="meta-firstline"><time class="post-meta__date" title="发表于 2020-03-28 00:00:00"><i class="fa fa-calendar" aria-hidden="true"></i> 发表于 2020-03-28</time><span class="post-meta__categories"><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="javascript:;">Spring框架</a></span></div><div class="meta-secondline"> <span class="post-meta-wordcount"><i class="post-meta__icon fa fa-file-word-o" aria-hidden="true"></i><span>字数总计:</span><span class="word-count">1.5k</span><span class="post-meta__separator">|</span><i class="post-meta__icon fa fa-clock-o" aria-hidden="true"></i><span>阅读时长: 4 分钟</span></span></div><div class="meta-thirdline"><span class="post-meta-pv-cv"><span class="post-meta__separator">|</span><i class="fa fa-eye post-meta__icon" aria-hidden="true"> </i><span>阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-commentcount"><span class="post-meta__separator">|</span><i class="post-meta__icon fa fa-comment-o" aria-hidden="true"></i><span>评论数:</span><a href="#post-comment" itemprop="discussionUrl"><span class="valine-comment-count comment-count" data-xid="/17692.html" itemprop="commentCount"></span></a></span></div></div></div></div><main class="layout_post" id="content-inner"><article id="post"><div id="article-container"><h2 id="一、Spring简介"><a href="#一、Spring简介" class="headerlink" title="一、Spring简介"></a>一、Spring简介</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><ul>
+<li>Spring 是最受欢迎的企业级 Java 应用程序开发框架，数以百万的来自世界各地的开发人员使用 Spring 框架来创建性能好、易于测试、可重用的代码。</li>
+<li>Spring 框架是一个开源的 Java 平台，它最初是由 Rod Johnson 编写的，并且于 2003 年 6 月首次在 Apache 2.0 许可下发布。</li>
+<li>Spring 是轻量级的框架，其基础版本只有 2 MB 左右的大小。</li>
+<li>Spring 框架的核心特性是可以用于开发任何 Java 应用程序，但是在 Java EE 平台上构建 web 应用程序是需要扩展的。 Spring 框架的目标是使 J2EE 开发变得更容易使用，通过启用基于 POJO 编程模型来促进良好的编程实践。</li>
+</ul>
+<h3 id="Spring框架"><a href="#Spring框架" class="headerlink" title="Spring框架"></a>Spring框架</h3><p><img src="static/picture/OVzAJZRNjLMB82U.gif" class="lazyload" data-src="static/picture/MTWzy6o8tx5HRfq.png" alt="arch1.png"></p>
+<h3 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h3><p>Spring框架带来的优势主要是对原来的web开发过程中的三层架构即<strong>表现层，业务层，持久层</strong>的优化。在原来的三层架构中表现层处理调用业务层处理接受的数据，业务层调用持久层层方法去查询数据库，就不可避免的<strong>产生了类与类，方法与方法之间的高度依赖，即高耦合性</strong>。而Spring框架的出现就很好的解决了这一问题，对原来的三层架构进行解耦。</p>
+<ul>
+<li>IoC即（Inversion of Control）<strong>控制反转</strong>：就很好的解决了类与类之间依赖产生的耦合性。</li>
+<li>AOP即（Aspect Oriented Programming）<strong>面向切面编程</strong>：则可以解决方法与方法之间依赖产生的耦合性。</li>
+</ul>
+<p>但要注意，对于耦合性只能进行降低，完全的消除是不可能的。</p>
+<h2 id="二、Spring框架的IoC"><a href="#二、Spring框架的IoC" class="headerlink" title="二、Spring框架的IoC"></a>二、Spring框架的IoC</h2><h3 id="几个概念"><a href="#几个概念" class="headerlink" title="几个概念"></a>几个概念</h3><ul>
+<li><strong>IoC （Inversion Of Control，控制反转）</strong>，是spring的<strong>核心</strong>，贯穿始终，所谓IOC ，对于spring框架来说，就是spring来负责<strong>控制对象的生命周期和对象间的关系</strong>。所有的类都会在spring容器中登记，告诉spring你是个什么，你需要什么，然后spring会在系统运行到适当的时候，把你要的东西主动给你，同时也把你交给其他需要你的东西。所有的类的创建、销毁都由 spring来控制，也就是说控制对象生存周期的不再是引用它的对象，而是spring。<strong>对于某个具体的对象而言，以前是它控制其他对象，现在是所有对象都被spring控制，所以这叫控制反转</strong>。</li>
+<li><strong>控制反转</strong>：就相当于，假如有 a 和 b 两个对象，在注入 IoC 之前，a 依赖于 b 那么对象 a 在初始化或者运行到某一点的时候，自己必须主动去创建对象 b 或者使用已经创建的对象 b ，无论是创建还是使用对象 b ，控制权都在自己手上 ，而注入 IOC 之后就变了，对象 a 与对象 b 之间失去了直接联系，当对象 a 运行到需要对象 b 的时候，IoC 容器会主动创建一个对象 b 注入到对象 a 需要的地方。对象 a 获得依赖对象 b 的过程，<strong>由主动行为变为了被动行为</strong>，控制权颠倒过来了，这就是“控制反转”这个名称的由来。</li>
+<li><strong>依赖注入</strong>： 依赖注入让 bean 与 bean 之间以<strong>配置文件</strong>组织在一起，而不是以硬编码的方式耦合在一起，其实依赖注入和控制反转是<strong>同一个概念</strong>，不管是依赖注入，还是控制反转，都采用动态、灵活的方式来管理各种对象。</li>
+</ul>
+<h3 id="IoC底层"><a href="#IoC底层" class="headerlink" title="IoC底层"></a>IoC底层</h3><p>其底层的实现是<strong>基于Java的反射机制</strong>和<strong>工厂模式</strong>而实现的。反射机制通俗来讲就是<strong>根据给出的类名（字符串方式）来动态地生成对象，这种编程方式可以让对象在生成时才被决定到底是哪一种对象</strong>，再结合工厂模式就可以再不依赖其他类的情况下“生产”对象。而<strong>IoC容器</strong>就是对工厂模式的深化。</p>
+<h3 id="IoC容器"><a href="#IoC容器" class="headerlink" title="IoC容器"></a>IoC容器</h3><ul>
+<li><p><strong>IoC 容器</strong>是 Spring 框架的核心。容器将创建对象，把它们连接在一起，配置它们，并管理他们的整个生命周期从创建到销毁。Spring 容器使用依赖注入（DI）来管理组成一个应用程序的组件。这些对象被称为 Spring Beans。</p>
+</li>
+<li><p><strong>IOC 容器</strong>具有依赖注入功能的容器，它可以创建对象，IOC 容器负责实例化、定位、配置应用程序中的对象及建立这些对象间的依赖。通常new一个实例，控制权由程序员控制，而”控制反转”是指new实例工作不由程序员来做而是交给Spring容器来做。<strong>在Spring中BeanFactory是IOC容器的实际代表者</strong>。</p>
+<ul>
+<li><p><strong>Spring BeanFactory 容器</strong> ：</p>
+<p>这是一个最简单的容器，这个容器接口在<code>org.springframework.beans.factory.BeanFactor</code> 中被定义。</p>
+</li>
+<li><p><strong>Spring ApplicationContext 容器</strong>：</p>
+<p>是BeanFactory的子接口，包含了父类接口的所有功能，还增加了企业中所需要的功能，更加优秀，在<code>org.springframework.context.ApplicationContext interface</code>接口中定义。</p>
+</li>
+</ul>
+<p>但一般情况下BeanFactory提高的功能也已经是够用的。 </p>
+</li>
+</ul>
+<h3 id="配置方式"><a href="#配置方式" class="headerlink" title="配置方式"></a>配置方式</h3><ul>
+<li><strong>xml</strong> 配置</li>
+<li><strong>注解</strong>配置</li>
+</ul>
+<h2 id="三、Spring框架的AOP"><a href="#三、Spring框架的AOP" class="headerlink" title="三、Spring框架的AOP"></a>三、Spring框架的AOP</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p><strong>AOP即Aspect Oriented Programming，意为面向切面编程</strong>，通过预编译方式和运行期间动态代理实现程序功能的统一维护的一种技术。是Spring框架中的另一个重要的内容，来解决方法与方法之间的依赖从而降低程序的耦合性。</p>
+<h3 id="底层"><a href="#底层" class="headerlink" title="底层"></a>底层</h3><p>其底层实现是用了Java的<strong>动态代理</strong>技术，即在不对原函数的方法代码进行改动的情况下，对原函数的方法进行一些改动操作。从而达到了方法之间的解耦操作。</p>
+<h2 id="四、Spring的Maven依赖"><a href="#四、Spring的Maven依赖" class="headerlink" title="四、Spring的Maven依赖"></a>四、Spring的Maven依赖</h2><ul>
+<li><strong>Spring核心依赖</strong><ul>
+<li>Spring-core</li>
+<li>Spring-beans</li>
+<li>Spring-context</li>
+</ul>
+</li>
+<li><strong>Spring dao依赖</strong>(提供JDBCTemplate)<ul>
+<li>Spring-jdbc</li>
+<li>Spring-tx</li>
+</ul>
+</li>
+<li><strong>Spring web依赖</strong><ul>
+<li>Spring-web</li>
+<li>Spring-webmvc</li>
+</ul>
+</li>
+<li><strong>Spring test依赖</strong><ul>
+<li>Spring-test</li>
+</ul>
+</li>
+</ul>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">丁生</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="javascript:;">http://fabian4.gitee.io/17692.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="javascript:;" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="index.html" target="_blank">丁生的个人博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="index10.html">java</a><a class="post-meta__tags" href="index11.html">spring</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2020/05/07/WGjQk25ap7NhlUS.jpg" data-sites="wechat,weibo,qq,qzone"></div><link rel="stylesheet" href="static/css/share.min.css"><script src="static/js/social-share.min.js"></script></div></div><div class="post-reward"><a class="reward-button button--primary button--animated"> <i class="fa fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><img class="lazyload post-qr-code__img" src="static/picture/h3WuUjvQlqPEAzS.png" alt="微信"><div class="post-qr-code__desc">微信</div></li><li class="reward-item"><img class="lazyload post-qr-code__img" src="static/picture/9yaek4PwfNoZEHF.jpg" alt="支付宝"><div class="post-qr-code__desc">支付宝</div></li></ul></div></a></div><nav class="pagination_post" id="pagination"><div class="prev-post pull_left"><a href="3026.html"><img class="prev_cover lazyload" data-src="https://i.loli.net/2020/04/24/IdxtVCnPlOoFfLW.jpg" onerror="onerror=null;src='https://i.loli.net/2020/04/24/MZwypBlWXcPu6aT.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Spring Bean配置——XML配Bean</div></div></a></div><div class="next-post pull_right"><a href="2861.html"><img class="next_cover lazyload" data-src="https://i.loli.net/2020/04/24/k7BNrpecHJqOE2o.jpg" onerror="onerror=null;src='https://i.loli.net/2020/04/24/MZwypBlWXcPu6aT.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">SSM框架实战</div></div></a></div></nav><div class="relatedPosts"><div class="relatedPosts_headline"><i class="fa fa-fw fa-thumbs-up" aria-hidden="true"></i><span> 相关推荐</span></div><div class="relatedPosts_list"><div class="relatedPosts_item"><a href="60824.html" title="Spring Bean配置——注解配Bean"><img class="relatedPosts_cover lazyload" data-src="https://i.loli.net/2020/04/24/UuKkAcjq6rZzs8v.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2020-04-05</div><div class="relatedPosts_title">Spring Bean配置——注解配Bean</div></div></a></div><div class="relatedPosts_item"><a href="3026.html" title="Spring Bean配置——XML配Bean"><img class="relatedPosts_cover lazyload" data-src="https://i.loli.net/2020/04/24/IdxtVCnPlOoFfLW.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2020-04-01</div><div class="relatedPosts_title">Spring Bean配置——XML配Bean</div></div></a></div><div class="relatedPosts_item"><a href="57175.html" title="Spring AOP的配置和应用"><img class="relatedPosts_cover lazyload" data-src="https://i.loli.net/2020/04/24/186zIDlrCPFeuXQ.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2020-04-12</div><div class="relatedPosts_title">Spring AOP的配置和应用</div></div></a></div><div class="relatedPosts_item"><a href="2861.html" title="SSM框架实战"><img class="relatedPosts_cover lazyload" data-src="https://i.loli.net/2020/04/24/k7BNrpecHJqOE2o.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2020-03-24</div><div class="relatedPosts_title">SSM框架实战</div></div></a></div><div class="relatedPosts_item"><a href="56408.html" title="Spring Boot 笔记"><img class="relatedPosts_cover lazyload" data-src="static/picture/1ncfhPdosVSEkZb.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2020-04-15</div><div class="relatedPosts_title">Spring Boot 笔记</div></div></a></div></div><div class="clear_both"></div></div><hr><div id="post-comment"><div class="comment_headling"><i class="fa fa-comments fa-fw" aria-hidden="true"></i><span> 评论</span></div><div class="vcomment" id="vcomment"></div><script src="static/js/Valine.min.js"></script><script>var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+
+window.valine = new Valine({
+  el:'#vcomment',
+  notify: false,
+  verify: false,
+  appId: 'cjbkGguzmuIOFaSfn7miKri5-gzGzoHsz',
+  appKey: 'tbNXCYd7AaxYAvjBoBfhFSNx',
+  placeholder: '留下你的评论吧！',
+  avatar: 'robohash',
+  meta: guest_info,
+  pageSize: '5',
+  lang: 'zh-cn',
+  recordIP: false,
+  serverURLs: ''
+});</script></div></article></main><footer id="footer" style="background-image: url(static/image/2c3XOeVFzLdnAE1.jpg)" data-type="photo"><div id="footer-wrap"><div class="copyright">&copy;2020 By 丁生</div><div class="footer_custom_text">Hi, welcome to my <a href="index.html">blog</a>!</div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><i class="fa fa-book" id="readmode" title="阅读模式"></i><i class="fa fa-plus" id="font_plus" title="放大字体"></i><i class="fa fa-minus" id="font_minus" title="缩小字体"></i><a class="translate_chn_to_cht" id="translateLink" href="javascript:translatePage();" title="简繁转换" target="_self">简</a><i class="darkmode fa fa-moon-o" id="darkmode" title="夜间模式"></i></div><div id="rightside-config-show"><div id="rightside_config" title="设置"><i class="fa fa-cog" aria-hidden="true"></i></div><a id="to_comment" href="#post-comment" title="直达评论"><i class="scroll_to_comment fa fa-comments">  </i></a><i class="fa fa-list-ul close" id="mobile-toc-button" title="目录" aria-hidden="true"></i><i class="fa fa-arrow-up" id="go-up" title="回到顶部" aria-hidden="true"></i></div></section><script src="static/js/jquery.min.js"></script><script src="static/js/utils.js"></script><script src="static/js/main.js"></script><script src="static/js/main.js"></script><script src="static/js/jquery.fancybox.min.js"></script><script src="static/js/snackbar.min.js"></script><script id="canvas_nest" color="0,0,255" opacity="0.7" zindex="-1" count="99" mobile="false" src="static/js/main.js"></script><script async="" src="static/js/busuanzi.pure.mini.js"></script><script src="static/js/instantpage.min.js" type="module"></script><script src="static/js/lazysizes.min.js" async=""></script><script src="static/js/main.js"></script></body></html>
