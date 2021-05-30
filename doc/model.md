@@ -3,7 +3,7 @@
 |字段|类型|
 |----|----|
 |**user_id**|**int**|
-|username|string|
+|user_name|string|
 |password|string|
 |nick|string|
 |email|string|
