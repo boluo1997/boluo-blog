@@ -7,6 +7,7 @@
 |password|string|
 |nick_name|string|
 |email|string|
+|phone|string|
 |head_img_url|string|
 |create_time|timestamp|
 |is_delete|bigint|
