@@ -1,7 +1,6 @@
 package com.boluo.blog.response;
 
-// import io.swagger.annotations.ApiModel;
-
+import io.swagger.annotations.ApiModel;
 import com.boluo.blog.request.PageHelper;
 
 import java.util.ArrayList;
@@ -11,13 +10,13 @@ import java.util.List;
  * ClassName:BasePageResponse <br/>
  * Function: 带分页数据的接口响应基类 <br/>
  * Reason: 带分页数据的接口响应基类 <br/>
- * Date: 2018年4月24日 下午7:43:28 <br/>
+ * Date: 2021年5月31日 下午7:43:28 <br/>
  *
  * @author java
  * @see
  * @since JDK 1.8
  */
-// @ApiModel(description = "分页响应参数")
+@ApiModel(description = "分页响应参数")
 public class BasePageResponse<T> extends BaseResponse<List<T>> {
 
     private static final long serialVersionUID = -7555741211218226533L;

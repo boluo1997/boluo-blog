@@ -3,7 +3,7 @@ package com.boluo.blog.response;
 import com.alibaba.fastjson.JSON;
 import com.boluo.blog.enums.SystemResultCode;
 
-// import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModel;
 import java.io.Serializable;
 
 /**
@@ -16,7 +16,7 @@ import java.io.Serializable;
  * @see
  * @since JDK 1.8
  */
-// @ApiModel(description= "响应状态信息")
+@ApiModel(description= "响应状态信息")
 public class ResultInfo implements Serializable {
 
     private static final long serialVersionUID = 7090871925754206719L;
