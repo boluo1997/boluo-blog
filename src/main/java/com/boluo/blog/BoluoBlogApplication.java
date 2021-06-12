@@ -11,9 +11,6 @@ import org.springframework.cache.annotation.EnableCaching;
 public class BoluoBlogApplication {
 
 	public static void main(String[] args) {
-
 		SpringApplication.run(BoluoBlogApplication.class, args);
-
 	}
-
 }
