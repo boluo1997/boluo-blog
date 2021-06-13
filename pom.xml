@@ -160,6 +160,12 @@
             <version>1.10.3</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20160810</version>
+        </dependency>
+
         <!-- 解决 NoClassDefFoundError -->
         <dependency>
             <groupId>org.codehaus.janino</groupId>
