@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.boluo.blog.dao.JapanVideoDao">
+
+    <insert id="insertMovie">
+        insert into japan_video(video_id, title, url, cover)
+        values (#{jm.videoId},
+                #{jm.title},
+                #{jm.url},
+                #{jm.cover})
+
+    </insert>
+
+    <insert id="insertMovies">
+        insert into japan_video(video_id, title, url, cover)
+        values
+        <foreach collection="list" item="item" separator=",">
+            (
+            #{item.videoId},
+            #{item.title},
+            #{item.url},
+            #{item.cover}
+            )
+        </foreach>
+    </insert>
+
+</mapper>
