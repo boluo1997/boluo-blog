@@ -26,4 +26,18 @@
         </foreach>
     </insert>
 
+    <!-- 查询所有视频 -->
+    <select id="selectMovies" resultType="com.boluo.blog.domain.JapanMovie">
+        select video_id, title, url, cover
+        from japan_video
+        where is_download != 1;
+    </select>
+
+    <!-- 修改视频下载状态为已下载 -->
+    <update id="updateMovieStatus">
+        update japan_video
+        set is_download = 1
+        where url = #{url};
+    </update>
+
 </mapper>

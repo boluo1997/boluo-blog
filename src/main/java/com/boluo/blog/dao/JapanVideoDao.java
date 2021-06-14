@@ -11,4 +11,8 @@ public interface JapanVideoDao {
 
     void insertMovies(@Param("list") List<JapanMovie> insertMovieList);
 
+    List<JapanMovie> selectMovies();
+
+    // 修改视频下载状态为已下载
+    void updateMovieStatus(@Param("url") String url);
 }

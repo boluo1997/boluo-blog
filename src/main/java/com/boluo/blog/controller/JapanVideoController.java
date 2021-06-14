@@ -26,4 +26,15 @@ public class JapanVideoController {
         }
     }
 
+    // 下载电影到本地
+    @RequestMapping("downloadStart")
+    public SysResult downloadStart() {
+        try {
+            japanVideoService.downloadStart();
+            return SysResult.ok();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return SysResult.error();
+        }
+    }
 }
